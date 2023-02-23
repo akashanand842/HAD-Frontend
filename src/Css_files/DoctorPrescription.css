@@ -1,0 +1,22 @@
+.prescription-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dfd8d8;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10
+  }

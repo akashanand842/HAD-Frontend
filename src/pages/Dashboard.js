@@ -1,7 +1,17 @@
-import React from 'react'
+import React  from 'react'
 import Login from './login'
+import {Link,Navigate,useNavigate} from 'react-router-dom'
 
 function Dashboard() {
+    const navigate=useNavigate();
+    const navigatePatientLogin=()=>{
+        navigate('/patient_login');
+    }
+    const gotoPrescription=()=>{
+        navigate('/add-prescription',{
+            state:{patient_id:2,doctor_id:1}
+        });
+    }
     return (
         <>
             <div className="container text-center col-sm-8">
@@ -35,7 +45,7 @@ function Dashboard() {
                         <img src="./img.svg/patient_img.webp" className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Patient</h5>
-                            <button type="button" class="btn btn-success" onClick={<login/>}>Login</button>
+                            <button type="button" class="btn btn-success" onClick={navigatePatientLogin}>Login</button>  
                             <button type="button" class="btn btn-primary">SignUp</button>
                         </div>
                     </div>
@@ -45,7 +55,8 @@ function Dashboard() {
                         <img src="./img.svg/doctor_img2.jpeg" className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Doctor</h5>
-                            <button type="button" class="btn btn-primary">Login</button>
+                            <button type="button" class="btn btn-primary" onClick={navigatePatientLogin}>Login</button>
+                            <button type="button" class="btn btn-primary" onClick={gotoPrescription}>add-prescription</button>
                         </div>
                     </div>
                 </div>
