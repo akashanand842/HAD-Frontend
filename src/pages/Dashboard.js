@@ -12,6 +12,9 @@ function Dashboard() {
             state:{patient_id:2,doctor_id:1}
         });
     }
+    const gotodownloadPrescription=()=>{
+        navigate('/showPrescription')
+    }
     return (
         <>
             <div className="container text-center col-sm-8">
@@ -46,7 +49,7 @@ function Dashboard() {
                         <div className="card-body">
                             <h5 className="card-title">Patient</h5>
                             <button type="button" class="btn btn-success" onClick={navigatePatientLogin}>Login</button>  
-                            <button type="button" class="btn btn-primary">SignUp</button>
+                            <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>SignUp</button>
                         </div>
                     </div>
                 </div>

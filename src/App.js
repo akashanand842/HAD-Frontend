@@ -4,6 +4,7 @@ import NavHead from "./components/Nav";
 import Dashboard from './pages/Dashboard';
 import Login from './pages/login';
 import DoctorPrescription from './pages/DoctorPrescription';
+import DownloadPressciption from './pages/DownloadPressciption';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/patient_login" element={<Login></Login>}></Route>
           <Route path="/patientLogin"/>
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
+          <Route path="/showPrescription" element={<DownloadPressciption/>}/>
         </Routes>
       </Router>
     </div>
