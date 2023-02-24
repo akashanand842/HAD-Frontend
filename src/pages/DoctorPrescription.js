@@ -40,7 +40,7 @@ export default function DoctorPrescription(props) {
   //console.log(location.state.doctor_id);
   useEffect(() => {
     // Fetch patient and doctor names from backend via API
-    axios.get('http://172.16.130.102:8081/patient/get-name/${location.state.patient_id}')
+    axios.get(`http://localhost:8081/patient/get-name/${location.state.patient_id}`)
       .then((response) => {
         setPatientName(response.data.patientName);
         // setDoctorName(response.data.doctorName);
@@ -51,7 +51,7 @@ export default function DoctorPrescription(props) {
   }, []);
   useEffect(() => {
     // Fetch patient and doctor names from backend via API
-    axios.get('http://172.16.130.102:8081/doctor/get-name/${location.state.doctor_id}')
+    axios.get(`http://localhost:8081/doctor/get-name/${location.state.doctor_id}`)
       .then((response) => {
         // setPatientName(response.data.patientName);
         setDoctorName(response.data.doctorName);
