@@ -8,27 +8,37 @@ export default function PatientPage() {
    const handlePatientClick=(patientId)=>{
      navigate(`/PatientDashboard/${patientId}`)
    }  
-    const [patientName,setPatientName] = useState([]);
+    const [patientList,setPatientList] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:8081/patient/patient-list/phone-number',{phoneNumber: '6397801245'})
+        axios.get('http://localhost:8081/patient/patient-list/phone-number',{
+          params: {phoneNumber: '6397801245'}
+        })
         .then((response)=>{
-            setPatientName(response.data.PatientPage);
+          console.log(response);
+            setPatientList(response.data);
         })
         .catch((error)=>{
             console.error('Error while getting the list of patient')
         });
     },[]);
-
   return (
-    <div>
-        <tbody>
-      {patientName.map((patient)=>{ 
-        <tr key={patient.patientId} onClick={()=>handlePatientClick(patient.patientId)} >
-        <td>{patient.patientName}</td>
-        <td>{patient.age}</td>
+      //   <table>
+      // {patientList.map((patient)=>{ 
+      //   <tr key={patient.patientId} onClick={()=>handlePatientClick(patient.patientId)} >
+      //   {<td>{patient.patientName}</td>}
+      //   {<td>{patient.age}</td>}
+      //   </tr>
+      // })}
+      // </table>
+    <table>
+      {patientList.map((patient)=>(
+        <tr key={patient.patientId} onClick={()=>handlePatientClick(patient.patientId)}>
+          {Object.values(patient).map((val)=>(
+            <td>{val}</td>
+          ))}
+          {/* {<td>{patient.patientName}</td>} */}
         </tr>
-      })}
-      </tbody>
-    </div>
+      ))}
+    </table>
   )
 }

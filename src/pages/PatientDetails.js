@@ -8,7 +8,7 @@ export default function PatientDetails() {
     },[]);
   return (
     <div>
-      
+      hello patient this side
     </div>
   )
 }
