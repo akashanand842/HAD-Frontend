@@ -17,7 +17,7 @@
 // }
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../Css_files/DoctorPrescription.css';
+//import '../DoctorPrescription.css'
 import { useLocation } from 'react-router-dom'
 
 export default function DoctorPrescription(props) {

@@ -1,5 +1,5 @@
 import React  from 'react'
-import Login from './login'
+import Login from '../Patient/login'
 import {Link,Navigate,useNavigate} from 'react-router-dom'
 
 function Dashboard() {

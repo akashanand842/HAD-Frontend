@@ -1,12 +1,12 @@
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import NavHead from "./components/Nav";
-import Dashboard from './pages/Dashboard';
-import Login from './pages/login';
-import DoctorPrescription from './pages/DoctorPrescription';
-import DownloadPressciption from './pages/DownloadPressciption';
-import PatientDashboard from './pages/PatientDashboard'
-import PatientPage from './pages/PatientPage';
+import Dashboard from './pages/Common/Dashboard';
+import Login from './pages/Patient/login'
+import DoctorPrescription from './pages/Doctor/DoctorPrescription';
+import DownloadPressciption from './pages/Patient/DownloadPressciption';
+import PatientDashboard from './pages/Patient/PatientDashboard'
+import PatientPage from './pages/Patient/PatientPage';
 
 function App() {
   return (
