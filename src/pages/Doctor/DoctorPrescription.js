@@ -17,7 +17,7 @@
 // }
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-//import '../DoctorPrescription.css'
+import '../../Css_files/DoctorPrescription.css'
 import { useLocation } from 'react-router-dom'
 
 export default function DoctorPrescription(props) {
@@ -89,6 +89,7 @@ export default function DoctorPrescription(props) {
   };
 
   return (
+    <div className='myBox'>
     <div className="prescription-form">
       <h2>Add Prescription</h2>
       <form onSubmit={handleSubmit}>
@@ -117,7 +118,7 @@ export default function DoctorPrescription(props) {
           <input type="text" value={dosage} onChange={(e) => setDosage(e.target.value)} />
         </label>
 
-        <button type="submit" disabled={submitting}>Submit</button>
+        <button className='btn btn-success' type="submit" disabled={submitting}>Submit</button>
 
         {success && (
           <div className="success-message">
@@ -132,6 +133,52 @@ export default function DoctorPrescription(props) {
         )}
       </form>
     </div>
+    </div>
+//   <div className='container' style={{padding: '30px'}}>
+//   <div className="prescription-form">
+//   <h2>Add Prescription</h2>
+//   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
+//     <label >
+//       <span style={{ marginRight: '10px' }}>Patient Name:</span>
+//       <input type="text" value={patientName} readOnly style={{ flexGrow: '1', padding: '5px' }} />
+//     </label>
+
+//     <label >
+//       <span style={{ marginRight: '10px' }}>Doctor Name:</span>
+//       <input type="text" value={doctorName} readOnly style={{ flexGrow: '1', padding: '5px' }} />
+//     </label>
+
+//     <label style={{ marginBottom: '10px' }}>
+//       Medical Finding:
+//       <textarea value={medicalFinding} onChange={(e) => setMedicalFinding(e.target.value)} style={{ width: '100%', padding: '5px' }} />
+//     </label>
+
+//     <label >
+//       <span style={{ marginRight: '10px' }}>Medicine Name:</span>
+//       <input type="text" value={medicineName} onChange={(e) => setMedicineName(e.target.value)} style={{ flexGrow: '1', padding: '5px' }} />
+//     </label>
+
+//     <label >
+//       <span style={{ marginRight: '10px' }}>Dosage:</span>
+//       <input type="text" value={dosage} onChange={(e) => setDosage(e.target.value)} style={{ flexGrow: '1', padding: '5px' }} />
+//     </label>
+
+//     <button type="submit" disabled={submitting}>Submit</button>
+
+//     {success && (
+//       <div className="success-message">
+//         Prescription added successfully!
+//       </div>
+//     )}
+
+//     {error && (
+//       <div className="error-message">
+//         Error adding prescription.
+//       </div>
+//     )}
+//   </form>
+// </div>
+// </div>
   );
 }
 
