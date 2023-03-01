@@ -118,7 +118,9 @@ export default function DoctorPrescription(props) {
           <input type="text" value={dosage} onChange={(e) => setDosage(e.target.value)} />
         </label>
 
-        <button className='btn btn-success' type="submit" disabled={submitting}>Submit</button>
+        <button className='btn btn-outline-success' type="submit" disabled={submitting}>
+                      Submit
+          </button>
 
         {success && (
           <div className="success-message">
