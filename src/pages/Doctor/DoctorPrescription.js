@@ -19,6 +19,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../Css_files/DoctorPrescription.css'
 import { useLocation } from 'react-router-dom'
+import { duration } from '@mui/material';
 
 export default function DoctorPrescription(props) {
   const [patientName, setPatientName] = useState('');
@@ -26,6 +27,7 @@ export default function DoctorPrescription(props) {
   const [medicalFinding, setMedicalFinding] = useState('');
   const [medicineName, setMedicineName] = useState('');
   const [dosage, setDosage] = useState('');
+  const [duration, setDuration] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -74,7 +76,7 @@ export default function DoctorPrescription(props) {
     };
 
     // Send prescription data to backend via API
-    axios.post('http://localhost:8081/patient/prescription', prescription)
+    axios.post(`http://localhost:8081/patient/add/prescription/${location.state.patient_id}/${location.state.doctor_id}`, prescription)
       .then((response) => {
         setSubmitting(false);
         setSuccess(true);
@@ -117,8 +119,12 @@ export default function DoctorPrescription(props) {
           Dosage:
           <input type="text" value={dosage} onChange={(e) => setDosage(e.target.value)} />
         </label>
+        <label>
+          Duration:
+          <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} />
+        </label>
 
-        <button className='btn btn-outline-success' type="submit" disabled={submitting}>
+        <button className='btn btn-outline-success' type="submit" onClick={handleSubmit}>
                       Submit
           </button>
 

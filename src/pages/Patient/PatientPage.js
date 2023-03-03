@@ -7,41 +7,41 @@ import "../../Css_files/DoctorPrescription.css";
 export default function PatientPage() {
   const navigate = useNavigate();
   const handlePatientClick = (patientId) => {
-    navigate(`/PatientDashboard/${patientId}`);
+    navigate(`/PatientDashboard:patientId`);
   };
   const [lists, setLists] = useState(true);
-  // const [patientList,setPatientList] = useState([]);
+  const [patientList,setPatientList] = useState([]);
 
-  const patientList = [
-    {
-      name: "Akash",
-      age: 22,
-    },
-    {
-      name: "Yasha",
-      age: 22,
-    },
-    {
-      name: "Yash",
-      age: 23,
-    },
-    {
-      name: "Aryan",
-      age: 26,
-    },
-  ];
-  // useEffect(()=>{
-  //     axios.get('http://localhost:8081/patient/patient-list/phone-number',{
-  //       params: {phoneNumber: '6397801245'}
-  //     })
-  //     .then((response)=>{
-  //       console.log(response);
-  //         setPatientList(response.data);
-  //     })
-  //     .catch((error)=>{
-  //         console.error('Error while getting the list of patient')
-  //     });
-  // },[]);
+  // const patientList = [
+  //   {
+  //     name: "Akash",
+  //     age: 22,
+  //   },
+  //   {
+  //     name: "Yasha",
+  //     age: 22,
+  //   },
+  //   {
+  //     name: "Yash",
+  //     age: 23,
+  //   },
+  //   {
+  //     name: "Aryan",
+  //     age: 26,
+  //   },
+  // ];
+  useEffect(()=>{
+      axios.get('http://localhost:8081/patient/patient-list/phone-number',{
+        params: {phoneNumber: '97945634634'}
+      })
+      .then((response)=>{
+        console.log(response.data);
+          setPatientList(response.data);
+      })
+      .catch((error)=>{
+          console.error('Error while getting the list of patient')
+      });
+  },[]);
   return (
     <>
       <body
@@ -51,7 +51,7 @@ export default function PatientPage() {
           height: "600px",
         }}
       >
-        {lists == true ? (
+        {lists === true ? (
           <div
             className="container"
             style={{
@@ -72,7 +72,7 @@ export default function PatientPage() {
               }}
             >
               {patientList.map((patient, index) => (
-                <a href="/patient_login" style={{ textDecoration: "none" }}>
+                <a href="/PatientDashboard:patientId" style={{ textDecoration: "none" }}>
                   <div
                     key={index}
                     className="card border-dark text-bg-light mb-3"
@@ -92,7 +92,7 @@ export default function PatientPage() {
                   >
                     <div className="card-body text-center">
                       <h5 className="card-title">
-                        {patient.name} {patient.age}
+                        {patient.patientName} {patient.age}
                       </h5>
                     </div>
                   </div>

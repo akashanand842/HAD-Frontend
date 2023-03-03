@@ -7,6 +7,7 @@ import DoctorPrescription from './pages/Doctor/DoctorPrescription';
 import DownloadPressciption from './pages/Patient/DownloadPressciption';
 import PatientDashboard from './pages/Patient/PatientDashboard'
 import PatientPage from './pages/Patient/PatientPage';
+import PatientMenu from './pages/Patient/PatientMenu';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
-          <Route path="/PatientDashboard:patientId" element={<PatientDashboard/>}/>
+          
+          <Route path="/PatientDashboard:patientId" element={<PatientMenu/>}/>
         </Routes>
       </Router>
     </div>
