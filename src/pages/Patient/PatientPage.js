@@ -1,38 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../../Css_files/DoctorPrescription.css";
+import { useNavigate,useLocation } from "react-router-dom";
+// import "../../Css_files/DoctorPrescription.css";
 
 export default function PatientPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const handlePatientClick = (patientId) => {
-    navigate(`/PatientDashboard:patientId`);
+    navigate('/PatientDashboard',{
+      state:{patient_id:patientId}
+    })
   };
   const [lists, setLists] = useState(true);
   const [patientList,setPatientList] = useState([]);
-
-  // const patientList = [
-  //   {
-  //     name: "Akash",
-  //     age: 22,
-  //   },
-  //   {
-  //     name: "Yasha",
-  //     age: 22,
-  //   },
-  //   {
-  //     name: "Yash",
-  //     age: 23,
-  //   },
-  //   {
-  //     name: "Aryan",
-  //     age: 26,
-  //   },
-  // ];
+  console.log(location.state.patientNum);
   useEffect(()=>{
       axios.get('http://localhost:8081/patient/patient-list/phone-number',{
-        params: {phoneNumber: '97945634634'}
+        params: {phoneNumber: `${location.state.patientNum}`}
       })
       .then((response)=>{
         console.log(response.data);
@@ -67,12 +52,14 @@ export default function PatientPage() {
               style={{
                 width: "300px",
                 padding: "30px",
+                marginLeft :"75px",
                 border: "2px solid #ccc",
                 backgroundColor: "rgb(221, 235, 235)",
               }}
             >
               {patientList.map((patient, index) => (
-                <a href="/PatientDashboard:patientId" style={{ textDecoration: "none" }}>
+                <a> 
+                  {/* href="/PatientDashboard:patientId" style={{ textDecoration: "none" }}> */}
                   <div
                     key={index}
                     className="card border-dark text-bg-light mb-3"
@@ -89,6 +76,7 @@ export default function PatientPage() {
                       (e.currentTarget.style.boxShadow =
                         "0 0 5px rgba(0, 0, 0, 0.3)")
                     }
+                    onClick={()=>handlePatientClick(patient.patientId)}
                   >
                     <div className="card-body text-center">
                       <h5 className="card-title">

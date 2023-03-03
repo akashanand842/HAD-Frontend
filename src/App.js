@@ -21,8 +21,7 @@ function App() {
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
-          
-          <Route path="/PatientDashboard:patientId" element={<PatientMenu/>}/>
+          <Route path="/PatientDashboard" element={<PatientMenu/>}/>
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,15 @@
+.adjust{
+    display: flex;
+    justifyContent: center;
+    alignItems: center;
+    height: 90vh;
+    color: rgb(222, 241, 241);
+}
+.centered{
+    width: 300px;
+    padding: 30px;
+    margin-top: 60px;
+    margin-left: 400px;
+    border: 2px solid #ccc;
+    backgroundColor: rgb(221, 235, 235);
+}

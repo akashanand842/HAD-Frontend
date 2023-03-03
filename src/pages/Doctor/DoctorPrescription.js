@@ -68,15 +68,17 @@ export default function DoctorPrescription(props) {
     setSubmitting(true);
 
     const prescription = {
-      patientName: patientName,
-      doctorName: doctorName,
+      // patientName: patientName,
+      // doctorName: doctorName,
+      date : new Date(),
       medicalFinding: medicalFinding,
       medicineName: medicineName,
-      dosage: dosage
+      dosage: dosage,
+      duration: duration
     };
 
     // Send prescription data to backend via API
-    axios.post(`http://localhost:8081/patient/add/prescription/${location.state.patient_id}/${location.state.doctor_id}`, prescription)
+    axios.post(`http://localhost:8081/doctor/add/prescription/${location.state.patient_id}/${location.state.doctor_id}`, prescription)
       .then((response) => {
         setSubmitting(false);
         setSuccess(true);

@@ -8,7 +8,7 @@ const [pdfUrl, setPdfUrl] = useState('');
 
   const handleDownloadClick = async () => {
     try {
-        const response = await axios.get('http://localhost:8081/patient/prescription/2/1', {
+        const response = await axios.get('http://localhost:8081/patient/prescription/2/2', {
           responseType: 'arraybuffer',
         });
         const blob = new Blob([response.data], { type: 'application/pdf' });
