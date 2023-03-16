@@ -21,7 +21,7 @@ function Dashboard() {
     return (
         <>
             <div className="row col-sm-4 mx-auto mt-3">
-                <div className="col">
+                <div className="col card">
                     <div className="card">
                         <img src="./img.svg/patient_img.png" style={{width:'150px', height: '150px'}} className="card-img-top" alt="..." />
                         <div className="card-body">
