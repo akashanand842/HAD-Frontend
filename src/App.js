@@ -8,11 +8,12 @@ import DownloadPressciption from './pages/Patient/DownloadPressciption';
 import PatientDashboard from './pages/Patient/PatientDashboard'
 import PatientPage from './pages/Patient/PatientPage';
 import PatientMenu from './pages/Patient/PatientMenu';
+import VideoCall from './pages/Common/VidoeCall'
+import RoomPage from './pages/Common/room';
 
 function App() {
   return (
     <div>
-      <Router>
         <NavHead/>
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
@@ -22,8 +23,9 @@ function App() {
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
           <Route path="/PatientDashboard" element={<PatientMenu/>}/>
+          <Route path="/VideoCall" element={<VideoCall/>}/>
+          <Route path="/room/:roomId" element={<RoomPage/>}></Route>
         </Routes>
-      </Router>
     </div>
   );
 }

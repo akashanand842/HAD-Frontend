@@ -18,15 +18,19 @@ function Dashboard() {
     const gotodownpatientpage=()=>{
         navigate('/PatientPage')
     }
+    const navigateVideoCall=()=>{
+        navigate('/VideoCall')
+    }
     return (
         <>
             <div className="row col-sm-4 mx-auto mt-3">
-                <div className="col card">
+                <div className="col">
                     <div className="card">
                         <img src="./img.svg/patient_img.png" style={{width:'150px', height: '150px'}} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Patient</h5>
                             <button type="button" class="btn btn-success" onClick={navigatePatientLogin}>Login</button>  
+                            <button type="button" class="btn btn-success" onClick={navigateVideoCall}>VideoCall</button>
                             {/* <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Prescription Download</button> */}
                             {/* <button type="button" class="btn btn-primary" onClick={gotodownpatientpage}>patientpages</button> */}
                         </div>
