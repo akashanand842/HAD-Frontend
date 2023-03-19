@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
-// import "../../Css_files/DoctorPrescription.css";
+import "../../Css_files/PatientPage.css";
 
 export default function PatientPage() {
   const navigate = useNavigate();
@@ -29,80 +29,20 @@ export default function PatientPage() {
   },[]);
   return (
     <>
-      <body
-        style={{
-          backgroundColor: "#ffffff",
-          color: "rgb(29, 30, 31)",
-          height: "600px",
-        }}
-      >
-        {lists === true ? (
-          <div
-            className="container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "90vh",
-              color: "rgb(222, 241, 241)",
-            }}
-          >
-            <div
-              className="centered"
-              style={{
-                width: "300px",
-                padding: "30px",
-                marginLeft :"75px",
-                border: "2px solid #ccc",
-                backgroundColor: "rgb(221, 235, 235)",
-              }}
-            >
-              {patientList.map((patient, index) => (
-                <a> 
-                  {/* href="/PatientDashboard:patientId" style={{ textDecoration: "none" }}> */}
-                  <div
-                    key={index}
-                    className="card border-dark text-bg-light mb-3"
-                    style={{
-                      boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
-                      backgroundColor: "#fff",
-                      color: "#333",
-                    }}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.style.boxShadow =
-                        "0 0 10px rgba(0, 0, 0, 0.5)")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.style.boxShadow =
-                        "0 0 5px rgba(0, 0, 0, 0.3)")
-                    }
-                    onClick={()=>handlePatientClick(patient.patientId)}
-                  >
-                    <div className="card-body text-center">
-                      <h5 className="card-title">
-                        {patient.patientName} {patient.age}
-                      </h5>
-                    </div>
-                  </div>
-                </a>
-              ))}
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <button
-                  type="button"
-                  class="btn btn-outline-dark"
-                  onClick={() => {
-                    setLists(false);
-                  }}
-                >
-                  + Add New
-                </button>
-              </div>
+    {lists===true? (
+      <div className="blockCss">
+         {patientList.map((patient,index)=>(
+            <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId)} >
+                <div className="adjust">
+                      <h5>{patient.patientName} {patient.age}</h5>
+                </div>
             </div>
-          </div>
-        ) : (
-          <>
-            <div className="myBox">
-              <div className="prescription-form">
+         ))} 
+        <button className="make-button" onClick={()=>setLists(false)}>+ Add New</button>
+     </div>
+    ):(
+           <div className="myBox">
+             <div className="prescription-form">
                 <h2>Registration</h2>
                 <form>
                   <label>
@@ -132,9 +72,8 @@ export default function PatientPage() {
                 </form>
               </div>
             </div>
-          </>
-        )}
-      </body>
+    )}
+    
     </>
   );
 }
