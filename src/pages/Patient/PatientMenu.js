@@ -22,6 +22,7 @@ import PatientDashboard from './PatientDashboard';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DescriptionIcon from '@mui/icons-material/Description';
+import Test from './Test';
 
 const drawerWidth = 240;
 
@@ -184,7 +185,8 @@ export default function PatientMenu() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <PatientDashboard/>
+        {/* <PatientDashboard/> */}
+        {/* <Test/> */}
       </Box>
     </Box>
   );

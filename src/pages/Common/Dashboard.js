@@ -19,7 +19,10 @@ function Dashboard() {
         navigate('/PatientPage')
     }
     const navigateVideoCall=()=>{
-        navigate('/VideoCall')
+        navigate('/room')
+    }
+    const gotoroomDoctor=()=>{
+        navigate('/roomDoctor');
     }
     return (
         <>
@@ -43,6 +46,7 @@ function Dashboard() {
                             <h5 className="card-title">Doctor</h5>
                             <button type="button" class="btn btn-primary" onClick={navigatePatientLogin}>Login</button>
                             <button type="button" class="btn btn-primary" onClick={gotoPrescription}>Add presc.</button>
+                            <button type="button" class="btn btn-primary" onClick={gotoroomDoctor}>video call.</button>
                         </div>
                     </div>
                 </div>

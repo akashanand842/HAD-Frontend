@@ -3,6 +3,8 @@ import { useLocation,useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../../Css_files/PatientDashboard.css";
+import RegistrationForm from './RegistrationForm';
+
 
 export default function PatientDashboard() {
   const location=useLocation();
@@ -22,11 +24,13 @@ export default function PatientDashboard() {
 const gotodownloadPrescription=()=>{
   navigate('/showPrescription')
 }
+ 
   return (
     <div className='centered'>
       <b>Hello {patient.patientName} Welcome To Your Dashboard</b> 
       <div>
-      <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button>   
+      <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button> 
+      <button>Registration</button>  
       </div>
     </div>
   )

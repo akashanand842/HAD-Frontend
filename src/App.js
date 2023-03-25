@@ -10,6 +10,9 @@ import PatientPage from './pages/Patient/PatientPage';
 import PatientMenu from './pages/Patient/PatientMenu';
 import VideoCall from './pages/Common/VidoeCall'
 import RoomPage from './pages/Common/room';
+import RoomPageDoctor from './pages/Doctor/roomDoctor'
+import Test from './pages/Patient/Test';
+
 
 function App() {
   return (
@@ -23,8 +26,12 @@ function App() {
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
           <Route path="/PatientDashboard" element={<PatientMenu/>}/>
+          {/* <Route path="/PatientDashboard" element={<Test/>}/> */}
           <Route path="/VideoCall" element={<VideoCall/>}/>
-          <Route path="/room/:roomId" element={<RoomPage/>}></Route>
+          {/* <Route path="/room/:roomId" element={<RoomPage/>}></Route> */}
+          <Route path="/room" element={<RoomPage/>}></Route>
+          <Route path="/roomDoctor" element={<RoomPageDoctor/>}></Route>
+
         </Routes>
     </div>
   );

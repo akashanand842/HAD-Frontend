@@ -1,15 +1,21 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useEffect } from 'react';
 
-const curr=0;
-const RoomPage=()=>{
-    //const {roomId} =useParams(); 
-    //const [curr,setCurr]=useState(0);
+const RoomPageDoctor=()=>{
+    
     let roomId=123;
-    console.log(typeof(roomId));
+    useEffect(()=>{
+        axios.post(`http://localhost:8081/doctor/consultation/${1}`)
+        .then((response)=>{
+            console.log(response.data);
+            
+        })
+        .catch((error)=>{
+            console.log('error while pop patient from queue',error);
+        })
+    },[])
     const func=()=>{
         console.log('sudhanshu kumar chauhan');
     }
@@ -18,7 +24,7 @@ const RoomPage=()=>{
         const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
         const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomId,Date.now().toString(),'sudhanshu');
         const zp = ZegoUIKitPrebuilt.create(kitToken);
-        
+
         zp.joinRoom(
             {
             container:element,
@@ -27,18 +33,10 @@ const RoomPage=()=>{
             },
         });
     }
-    useEffect(()=>{
-        axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomId}`,).then((response)=>{
-            console.log('queue success');
-        })
-        .catch((error)=>{
-          console.error('error on adding to queue',error);
-        });
-        return ()=>{ console.log('return')}
-    },[])
+
     return (
         <div ref={myMeeting(func())}></div>
     )
 }
 
-export default RoomPage;
+export default RoomPageDoctor;
