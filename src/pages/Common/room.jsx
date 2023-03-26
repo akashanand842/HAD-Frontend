@@ -3,12 +3,15 @@ import { useParams } from 'react-router-dom';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
+import "../../Css_files/VideoCall.css"
 
 const curr=0;
 const RoomPage=()=>{
     //const {roomId} =useParams(); 
     //const [curr,setCurr]=useState(0);
-    let roomId=123;
+    const roomId= Math.floor(Math.random()*1000000);
+    console.log(roomId)
+    const roomnum=roomId.toString();
     console.log(typeof(roomId));
     const func=()=>{
         console.log('sudhanshu kumar chauhan');
@@ -16,7 +19,7 @@ const RoomPage=()=>{
     const myMeeting =async (element) =>{
         const appID =2066795294
         const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
-        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomId,Date.now().toString(),'sudhanshu');
+        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,Date.now().toString(),'sudhanshu');
         const zp = ZegoUIKitPrebuilt.create(kitToken);
         
         zp.joinRoom(
@@ -37,7 +40,9 @@ const RoomPage=()=>{
         return ()=>{ console.log('return')}
     },[])
     return (
-        <div ref={myMeeting(func())}></div>
+        <div className='RoomCss' >
+            <div ref={myMeeting()}> </div>
+        </div>
     )
 }
 
