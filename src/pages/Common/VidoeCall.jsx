@@ -14,8 +14,8 @@ const VideoCall= ()=>{
     }
     return (
       <div>
-        {/* <label>Enter room code</label>
-        <input type="text" value={roomCode} onChange={e=> setRoomCode(e.target.value)} /> */}
+        <label>Enter room code</label>
+        <input type="text" value={roomCode} onChange={e=> setRoomCode(e.target.value)} />
         <button onClick={handleSubmit}>Enter Room</button>
       </div>
     
