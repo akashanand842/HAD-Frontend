@@ -28,6 +28,7 @@ const RoomPageDoctor=()=>{
         console.log('sudhanshu kumar chauhan');
     }
     const myMeeting =async (element) =>{
+        
         const appID =2066795294
         const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
         const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,Date.now().toString(),'sudhanshu');
@@ -43,7 +44,8 @@ const RoomPageDoctor=()=>{
     }
 
     return (
-        <div ref={myMeeting(func())}></div>
+        <button onClick={myMeeting()}> click me</button>
+        // <div ref={myMeeting(func())}></div>
     )
 }
 
