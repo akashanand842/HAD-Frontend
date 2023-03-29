@@ -12,19 +12,27 @@ export default function PatientPage() {
       state:{patient_id:patientId}
     })
   };
+  const jwtToken=localStorage.getItem('token');
+  console.log(jwtToken);
+  //axios.defaults.headers.common['Authorization'] =`Bearer ${jwtToken}`;
   const [lists, setLists] = useState(true);
   const [patientList,setPatientList] = useState([]);
   console.log(location.state.patientNum);
   useEffect(()=>{
       axios.get('http://localhost:8081/patient/patient-list/phone-number',{
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`,
+          'content-type': 'application/json'
+        },
         params: {phoneNumber: `${location.state.patientNum}`}
       })
       .then((response)=>{
         console.log(response.data);
+        console.log("Here in promis");
           setPatientList(response.data);
       })
       .catch((error)=>{
-          console.error('Error while getting the list of patient')
+          console.error('Error while getting the list of patient', error);
       });
   },[]);
   return (
