@@ -7,6 +7,9 @@ function Dashboard() {
     const navigatePatientLogin=()=>{
         navigate('/patient_login');
     }
+    const navigateDoctorLogin=()=>{
+        navigate('/doctor_login');
+    }
     const gotoPrescription=()=>{
         navigate('/add-prescription',{
             state:{patient_id:2,doctor_id:2}
@@ -45,7 +48,7 @@ function Dashboard() {
                         <img src="./img.svg/doctor_img.jpg" style={{widht:'150px', height:'150px'}} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">Doctor</h5>
-                            <button type="button" class="btn btn-primary" onClick={navigatePatientLogin}>Login</button>
+                            <button type="button" class="btn btn-primary" onClick={navigateDoctorLogin}>Login</button>
                             <button type="button" class="btn btn-primary" onClick={gotoPrescription}>Add presc.</button>
                             <button type="button" class="btn btn-primary" onClick={gotoroomDoctor}>video call.</button>
                         </div>

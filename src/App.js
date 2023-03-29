@@ -12,6 +12,7 @@ import VideoCall from './pages/Common/VidoeCall'
 import RoomPage from './pages/Common/room';
 import RoomPageDoctor from './pages/Doctor/roomDoctor'
 import Test from './pages/Patient/Test';
+import DoctorLogin from './pages/Doctor/DoctorLogin';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/patient_login" element={<Login></Login>}></Route>
+          <Route path='/doctor_login' element={<DoctorLogin/>}/>
           <Route path="/patientLogin"/>
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>

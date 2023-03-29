@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import axios from "axios";
-import { json } from "body-parser";
 
 function DoctorLogin() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -17,7 +16,7 @@ function DoctorLogin() {
     axios.get(`http://localhost:8081/doctor/doctor-by-contact/${doctorNumber}`)
     .then((response)=>{
          console.log(response.data);
-         //localStorage.setItem('doctor', JSON.stringify(response.data));
+         localStorage.setItem('doctor', JSON.stringify(response.data));
          navigate('/PatientPage',{
             state:{patientNum:doctorNumber}
           })
