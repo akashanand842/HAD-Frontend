@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import 'react-phone-number-input/style.css'
 import '../../Css_files/LoginPage.css'
 import PhoneInput from 'react-phone-number-input'
-import axios from 'axios';
 
 function Login() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -14,22 +13,9 @@ function Login() {
   const navigate=useNavigate();
   const gotoUserPage=(e)=>{
     let patientNumber=phoneNumber.slice(-10);
-    console.log("hello")
-    axios.post('http://localhost:8081/authenticate',{
-        username:patientNumber,
-        password:patientNumber
-      })
-      .then((response)=>{
-        console.log("IN LOGIN");
-        console.log(response.data.jwtToken);
-        localStorage.setItem('token',response.data.jwtToken)
-        navigate('/PatientPage',{
-          state:{patientNum:patientNumber}
-        })
-      })
-      .catch(error=>{console.log(error)})
-    
-    
+    navigate('/PatientPage',{
+      state:{patientNum:patientNumber}
+    })
   }
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -38,7 +24,7 @@ function Login() {
         size: "invisible",
         callback: (response) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          console.log("captcha revieved");
+          console.log("captcha reviceved");
         },
       },
       authentication
@@ -74,8 +60,6 @@ function Login() {
           // User signed in successfully.
           const user = result.user;
           console.log(user);
-          console.log(typeof(phoneNumber));
-          console.log(typeof(OTP));
           gotoUserPage();
           // ...
         })
@@ -105,17 +89,22 @@ function Login() {
             <>
               <div className="mp-3">
                 <h6>OTP</h6>
-                <input type="number" className="form-control" id="otpInput" value={OTP}
-                 onChange={verifyOTP}/>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="otpInput"
+                  value={OTP}
+                  onChange={verifyOTP}
+                />
                 <div>
                   Please enter the one time pin
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={gotoUserPage}>submit</button>
+                <button type="submit" className="btn btn-primary" onClick={verifyOTP}>submit</button>
               </div>
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={gotoUserPage}>
+            <button type="submit" className="btn btn-primary" onClick={requestOTP}>
               Request Otp
             </button>
           ) : null}
