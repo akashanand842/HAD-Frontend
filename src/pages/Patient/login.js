@@ -5,18 +5,22 @@ import { useNavigate } from "react-router-dom";
 import 'react-phone-number-input/style.css'
 import '../../Css_files/LoginPage.css'
 import PhoneInput from 'react-phone-number-input'
+import NavHead from "../../components/Nav";
 
 function Login() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [expandForm, setExpandForm] = useState(false);
   const [OTP, setOTP] = useState('');
   const navigate=useNavigate();
+
   const gotoUserPage=(e)=>{
     let patientNumber=phoneNumber.slice(-10);
+    localStorage.setItem('Phone_num',patientNumber);
     navigate('/PatientPage',{
       state:{patientNum:patientNumber}
     })
   }
+
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
@@ -72,6 +76,7 @@ function Login() {
  console.log(OTP);
   return (
     <>
+    <NavHead/>
      <div >
          <div className="col-md-2 offset-md-8 box" >
           <h3>Enter Your number</h3>
@@ -104,7 +109,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={requestOTP}>
+            <button type="submit" className="btn btn-primary" onClick={gotoUserPage}>
               Request Otp
             </button>
           ) : null}

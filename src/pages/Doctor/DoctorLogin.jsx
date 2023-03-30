@@ -5,26 +5,28 @@ import { useNavigate } from "react-router-dom";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import axios from "axios";
+import NavHead from "../../components/Nav";
 
 function DoctorLogin() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [expandForm, setExpandForm] = useState(false);
   const [OTP, setOTP] = useState('');
+
   const navigate=useNavigate();
+
   const gotoUserPage=(e)=>{
     let doctorNumber=phoneNumber.slice(-10);
     axios.get(`http://localhost:8081/doctor/doctor-by-contact/${doctorNumber}`)
     .then((response)=>{
          console.log(response.data);
          localStorage.setItem('doctor', JSON.stringify(response.data));
-         navigate('/PatientPage',{
-            state:{patientNum:doctorNumber}
-          })
+         navigate('/DoctorPage')
     })
     .catch((error)=>{
         console.error('error on fatching doctor object',error);
     })
   }
+
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
@@ -80,6 +82,7 @@ function DoctorLogin() {
  console.log(OTP);
   return (
     <>
+    <NavHead/>
      <div >
          <div className="col-md-2 offset-md-8 box" >
           <h3>Enter Your number</h3>

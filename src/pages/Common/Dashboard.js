@@ -1,6 +1,7 @@
 import React  from 'react'
 import Login from '../Patient/login'
 import {Link,Navigate,useNavigate} from 'react-router-dom'
+import NavHead from '../../components/Nav';
 
 function Dashboard() {
     const navigate=useNavigate();
@@ -30,6 +31,7 @@ function Dashboard() {
     }
     return (
         <>
+        <NavHead/>
             <div className="row col-sm-4 mx-auto mt-3">
                 <div className="col">
                     <div className="card">
