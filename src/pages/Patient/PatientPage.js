@@ -5,16 +5,23 @@ import { useNavigate,useLocation } from "react-router-dom";
 import "../../Css_files/PatientPage.css";
 
 export default function PatientPage() {
+
   const navigate = useNavigate();
   const location = useLocation();
-  const handlePatientClick = (patientId) => {
+  const [lists, setLists] = useState(true);
+  const [patientList,setPatientList] = useState([]);
+
+  const handlePatientClick = (patientId,index) => {
+    
+    localStorage.setItem('patient', JSON.stringify(patientList[index]));
+
     navigate('/PatientDashboard',{
       state:{patient_id:patientId}
     })
   };
-  const [lists, setLists] = useState(true);
-  const [patientList,setPatientList] = useState([]);
+  
   console.log(location.state.patientNum);
+
   useEffect(()=>{
       axios.get('http://localhost:8081/patient/patient-list/phone-number',{
         params: {phoneNumber: `${location.state.patientNum}`}
@@ -27,12 +34,13 @@ export default function PatientPage() {
           console.error('Error while getting the list of patient')
       });
   },[]);
+
   return (
     <>
     {lists===true? (
       <div className="blockCss">
          {patientList.map((patient,index)=>(
-            <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId)} >
+            <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId,index)} >
                 <div className="adjust">
                       <h5>{patient.patientName} {patient.age}</h5>
                 </div>
