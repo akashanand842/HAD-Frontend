@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* horizontally center contents */
+    flex-direction: column; /* stack contents vertically */
+    max-width: 400px;
+    max-height: 400px;
+    margin: 2% auto; /* center container horizontally */
+  }
+  
+  .text {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .card {
+    background-color: #bad8f7;
+    border: 1px solid #83d3f5;
+    border-radius: 4px;
+    margin-top: 50px;
+    /* margin: 2%; */
+    font-weight: 400;
+    padding: 8px;
+    width: 300px;
+    height: 50px;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #46bb1b;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #3e831b;
+  }
+  
+  button:active {
+    transform: translateY(2px);
+  }
+  
