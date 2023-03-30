@@ -27,13 +27,13 @@ const SideNav = () => {
     <>
       <div className="sidebar">
           <div className='sidediv'>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={home}>
             <div className='sidebaricon'><HomeIcon/></div>
-            <li className="sidebartitle" onClick={home}>Home</li>
+            <li className="sidebartitle">Home</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={profile}>
             <div className='sidebaricon'><AccountBoxIcon/></div>
-            <li className="sidebartitle" onClick={profile}>Profile</li>
+            <li className="sidebartitle">Profile</li>
             </div>
             <div className='sidebarRow'>
             <div className='sidebaricon'><ManageSearchIcon/></div>
@@ -43,9 +43,9 @@ const SideNav = () => {
             <div className='sidebaricon'> <MedicationIcon/></div>
             <li className="sidebartitle">Prescriptions</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={profile}>
             <div className='sidebaricon'><ExitToAppOutlinedIcon/></div>
-            <li className="sidebartitle" onClick={signOut}>Sign Out</li>
+            <li className="sidebartitle">Sign Out</li>
             </div>
             </div>
       

@@ -43,13 +43,13 @@ const PatientSideNav = () => {
             <div className='sidebaricon'> <MedicationIcon/></div>
             <li className="sidebartitle">Prescriptions</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={SwitchUser}>
             <div className='sidebaricon'><SwitchAccountIcon/></div>
-            <li className="sidebartitle" onClick={SwitchUser}>Switch User</li>
+            <li className="sidebartitle" >Switch User</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={signOut}>
             <div className='sidebaricon'><ExitToAppOutlinedIcon/></div>
-            <li className="sidebartitle" onClick={signOut}>Sign Out</li>
+            <li className="sidebartitle" >Sign Out</li>
             </div>
             </div>
       

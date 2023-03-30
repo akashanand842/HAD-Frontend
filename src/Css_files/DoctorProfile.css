@@ -1,4 +1,4 @@
-.centered {
+.centere {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,12 +6,15 @@
 }
 
 
-.card-body {
+.card-bod {
     width: 400px;
     height: 400px;
+    margin-top: 12vh;
+    margin-left: 12vw;
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
     max-width: 100dvh;
     max-height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
