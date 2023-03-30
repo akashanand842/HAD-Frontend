@@ -1,0 +1,17 @@
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+}
+
+
+.card-body {
+    width: 400px;
+    height: 400px;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+    max-width: 100dvh;
+    max-height: 500px;
+}

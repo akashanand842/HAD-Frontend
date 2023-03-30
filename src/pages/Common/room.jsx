@@ -82,7 +82,7 @@ const RoomPage=()=>{
        
       <div>
         {/* <button onClick={myMeeting}>click me</button> */}
-        <div ref={myMeeting()}></div>
+        <div className='RoomCss' ref={myMeeting()}></div>
       </div>
     )
 }

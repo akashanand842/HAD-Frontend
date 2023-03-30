@@ -14,6 +14,7 @@ import RoomPageDoctor from './pages/Doctor/roomDoctor'
 import Test from './pages/Patient/Test';
 import DoctorLogin from './pages/Doctor/DoctorLogin';
 import DoctorPage from './pages/Doctor/DoctorPage';
+import DoctorProfile from './pages/Doctor/DoctorProfile';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/PatientDashboard" element={<PatientDashboard/>}/>
           <Route path="/VideoCall" element={<VideoCall/>}/>
           <Route path="/room/:roomId" element={<RoomPage/>}></Route>
+          <Route path="/DoctorProfile" element={<DoctorProfile/>}/>
           {/* <Route path="/room" element={<RoomPage/>}></Route> */}
           <Route path="/roomDoctor" element={<RoomPageDoctor/>}></Route>
         </Routes>
