@@ -18,7 +18,9 @@ const SideNav = () => {
   const profile =()=>{
     navigate('/DoctorProfile');
   }
-
+  const history = () =>{
+    navigate('/doctor-history');
+  }
   const home =()=>{
     navigate('/DoctorPage');
   }
@@ -35,7 +37,7 @@ const SideNav = () => {
             <div className='sidebaricon'><AccountBoxIcon/></div>
             <li className="sidebartitle">Profile</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={history}>
             <div className='sidebaricon'><ManageSearchIcon/></div>
             <li className="sidebartitle">History</li>
             </div>
