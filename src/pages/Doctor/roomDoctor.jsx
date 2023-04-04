@@ -2,6 +2,7 @@ import React from 'react'
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const RoomPageDoctor=()=>{
     
@@ -19,7 +20,9 @@ const RoomPageDoctor=()=>{
     },[])
     if(!load)
     {
+        <LinearProgress />
         return <div>Loading...</div>;
+        
     }
     console.log(typeof(roomId))
     const roomnum=roomId.toString();

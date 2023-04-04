@@ -43,7 +43,7 @@ const SideNav = () => {
             <div className='sidebaricon'> <MedicationIcon/></div>
             <li className="sidebartitle">Prescriptions</li>
             </div>
-            <div className='sidebarRow' onClick={profile}>
+            <div className='sidebarRow' onClick={signOut}>
             <div className='sidebaricon'><ExitToAppOutlinedIcon/></div>
             <li className="sidebartitle">Sign Out</li>
             </div>

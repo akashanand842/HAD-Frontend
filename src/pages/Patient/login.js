@@ -6,6 +6,7 @@ import 'react-phone-number-input/style.css'
 import '../../Css_files/LoginPage.css'
 import PhoneInput from 'react-phone-number-input'
 import NavHead from "../../components/Nav";
+import SmsIcon from '@mui/icons-material/Sms';
 
 function Login() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -109,7 +110,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={gotoUserPage}>
+            <button type="submit" className="btn btn-primary" onClick={gotoUserPage} >
               Request Otp
             </button>
           ) : null}
