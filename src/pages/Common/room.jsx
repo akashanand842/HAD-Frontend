@@ -31,8 +31,8 @@ const RoomPage=()=>{
     //       console.error('error on adding to queue',error);
     //     });
     //    })
-        const appID =2066795294
-        const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
+        const appID =121940273
+        const serverSecret ="c774162ad11624d4246a0aee5fb875f3";
         const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,roomnum,'sudhanshu');
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
