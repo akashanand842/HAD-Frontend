@@ -3,22 +3,27 @@ import { authentication } from "../../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import 'react-phone-number-input/style.css'
-import '../../Css_files/LoginPage.css'
 import PhoneInput from 'react-phone-number-input'
+import axios from "axios";
 import NavHead from "../../components/Nav";
-import SmsIcon from '@mui/icons-material/Sms';
 
-function Login() {
+function DoctorLogin() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [expandForm, setExpandForm] = useState(false);
   const [OTP, setOTP] = useState('');
+
   const navigate=useNavigate();
 
   const gotoUserPage=(e)=>{
-    let patientNumber=phoneNumber.slice(-10);
-    localStorage.setItem('Phone_num',patientNumber);
-    navigate('/PatientPage',{
-      state:{patientNum:patientNumber}
+    let doctorNumber=phoneNumber.slice(-10);
+    axios.get(`http://localhost:8081/doctor/doctor-by-contact/${doctorNumber}`)
+    .then((response)=>{
+         console.log(response.data);
+         localStorage.setItem('doctor', JSON.stringify(response.data));
+         navigate('/DoctorPage')
+    })
+    .catch((error)=>{
+        console.error('error on fatching doctor object',error);
     })
   }
 
@@ -110,7 +115,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={gotoUserPage} >
+            <button type="submit" className="btn btn-primary" onClick={gotoUserPage}>
               Request Otp
             </button>
           ) : null}
@@ -121,4 +126,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default DoctorLogin;
