@@ -23,8 +23,8 @@ function Dashboard() {
         navigate('/PatientPage')
     }
     const navigateVideoCall=()=>{
-        const roomId= Math.floor(Math.random()*1000000);
-        navigate(`/room/${roomId}`)
+        //const roomId= Math.floor(Math.random()*1000000);
+        navigate('/roomPatient')
     }
     const gotoroomDoctor=()=>{
         navigate('/roomDoctor');

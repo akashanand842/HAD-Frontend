@@ -14,20 +14,15 @@ const RoomPage=()=>{
     const roomnum = roomId.toString();
     console.log(roomnum)
     console.log(typeof(roomId))
+    const jwtToken=localStorage.getItem('token');
+    const patient_obj=JSON.parse(localStorage.getItem('patient'));
+    const name = patient_obj['patientName'];
+
     const myMeeting =(element) =>{
-        
-    //    const forqueue=(async()=>{
-    //     await axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomid}`,)
-    //     .then(()=>{
-    //         console.log('queue success');
-    //     })
-    //     .catch((error)=>{
-    //       console.error('error on adding to queue',error);
-    //     });
-    //    })
+
         const appID =121940273
         const serverSecret ="c774162ad11624d4246a0aee5fb875f3";
-        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,roomnum,'sudhanshu');
+        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,roomnum,name);
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
         zp.joinRoom(
@@ -36,11 +31,15 @@ const RoomPage=()=>{
             scenario:{
                mode:ZegoUIKitPrebuilt.VideoConference
             },
+            maxUsers: 2,
+            turnOnCameraWhenJoining: false,
+            turnOnMicrophoneWhenJoining: false,
         }
         )
     }
     
     useEffect(()=>{
+        axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
         axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomId}`,)
         .then((response)=>{
             console.log('queue success');

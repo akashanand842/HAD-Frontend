@@ -31,7 +31,11 @@ export default function PatientDashboard() {
 const gotodownloadPrescription=()=>{
   navigate('/showPrescription')
 }
- 
+
+const navigateVideoCall=()=>{
+  //const roomId= Math.floor(Math.random()*1000000);
+  navigate('/roomPatient')
+}
   return (
     <>
     <PatientSideNav/>
@@ -41,6 +45,7 @@ const gotodownloadPrescription=()=>{
       <div>
       <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button> 
       <button>Registration</button>  
+      <button onClick={navigateVideoCall}>videoCall</button>
       </div>
     </div>
     </>
