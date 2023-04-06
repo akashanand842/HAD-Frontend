@@ -7,13 +7,7 @@ import "../../Css_files/VideoCall.css"
 import { useMemo } from 'react';
 
 const RoomPage=()=>{
-    // const {roomId} =useParams(); 
-    // let roomnum="";// = roomid.toString();
-    // for(let i=0;i<roomId.length;i++)
-    // {
-    //     roomnum+=roomId[i];
-    // }
-    // let roomid=parseInt(roomnum);
+
     const min = 100000;
     const max = 999999;
     const roomId = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,7 +31,6 @@ const RoomPage=()=>{
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
         zp.joinRoom(
-            //forqueue(),
             {
             container:element,
             scenario:{
@@ -46,27 +39,6 @@ const RoomPage=()=>{
         }
         )
     }
-    
-    //  const ApiCheck=(()=>{
-    //     result=useMemo(async ()=>{
-    //         roomId= Math.floor(Math.random()*1000000);
-    //         console.log(roomId)
-    //         roomnum = roomId.toString();
-    //         console.log(typeof(roomId));
-    //         // function myFunction() {}
-    //         // setTimeout(myFunction, 5000);
-            
-    //         await axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomId}`,)
-    //         .then((response)=>{
-    //             console.log(response);
-    //             console.log('queue success');
-    //         })
-    //         .catch((error)=>{
-    //           console.error('error on adding to queue',error);
-    //         })
-    //         return roomnum;
-    //     },[1])
-    // })  
     
     useEffect(()=>{
         axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomId}`,)
@@ -81,7 +53,6 @@ const RoomPage=()=>{
     return (
        
       <div>
-        {/* <button onClick={myMeeting}>click me</button> */}
         <div className='RoomCss' ref={myMeeting()}></div>
       </div>
     )

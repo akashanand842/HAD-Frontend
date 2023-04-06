@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
 import "../../Css_files/PatientPage.css";
+import { type } from "@testing-library/user-event/dist/type";
 
 export default function PatientPage() {
 
@@ -10,6 +11,8 @@ export default function PatientPage() {
   const location = useLocation();
   const [lists, setLists] = useState(true);
   const [patientList,setPatientList] = useState([]);
+  const jwtToken=localStorage.getItem('token');
+  console.log(jwtToken);
 
   const handlePatientClick = (patientId,index) => {
     
@@ -21,6 +24,8 @@ export default function PatientPage() {
   };
   
   console.log(location.state.patientNum);
+
+  axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
 
   useEffect(()=>{
       axios.get('http://localhost:8081/patient/patient-list/phone-number',{

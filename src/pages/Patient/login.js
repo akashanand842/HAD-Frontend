@@ -7,6 +7,7 @@ import '../../Css_files/LoginPage.css'
 import PhoneInput from 'react-phone-number-input'
 import NavHead from "../../components/Nav";
 import SmsIcon from '@mui/icons-material/Sms';
+import axios from "axios";
 
 function Login() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -16,10 +17,58 @@ function Login() {
 
   const gotoUserPage=(e)=>{
     let patientNumber=phoneNumber.slice(-10);
-    localStorage.setItem('Phone_num',patientNumber);
-    navigate('/PatientPage',{
-      state:{patientNum:patientNumber}
-    })
+    console.log(typeof(patientNumber));
+    axios.post('http://localhost:8081/authenticate',{
+        username: patientNumber,
+        password: patientNumber
+      })
+      .then((response)=>{
+
+        console.log(response.data.jwtToken);
+        localStorage.setItem('token',response.data.jwtToken);
+        const jwtToken=localStorage.getItem('token');
+        axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
+        
+        axios.get('http://localhost:8081/doctor/role',{
+          params:{ phoneNumber: patientNumber}
+        })
+        .then((response)=>{
+          
+          localStorage.setItem('doctor_num',patientNumber);
+          axios.get(`http://localhost:8081/doctor/doctor-by-contact/${patientNumber}`)
+          .then((response)=>{
+            console.log(response.data);
+            localStorage.setItem('doctor', JSON.stringify(response.data));
+            navigate('/DoctorPage')
+          })
+          .catch((error)=>{
+          console.error('error on fatching doctor object',error);
+          })
+        })
+
+        .catch(()=>{
+
+          axios.get('http://localhost:8081/patient/role',{
+            params:{ phoneNumber: patientNumber}
+          })
+          .then(()=>{
+            localStorage.setItem('patient_num',patientNumber);
+            navigate('/PatientPage',{
+              state:{patientNum:patientNumber}
+              })
+          })
+          .catch(()=>{
+            alert("Sign up First");
+          })
+
+        })
+        // navigate('/PatientPage',{
+        //  state:{patientNum:patientNumber}
+        //  })
+      })
+      .catch((error)=>{
+          console.error('Error while fetch jwt')
+      });
   }
 
   const generateRecaptcha = () => {
