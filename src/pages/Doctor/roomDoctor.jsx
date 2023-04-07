@@ -2,13 +2,21 @@ import React from 'react'
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const RoomPageDoctor=()=>{
     
     const [roomId,setRoomId]=useState(123);
     const [load,setLoad]=useState(false);
+
+    const doctor_obj = JSON.parse(localStorage.getItem('doctor'));
+    const doctorId = doctor_obj['doctorId'];
+    const jwtToken = localStorage.getItem('token');
+    const doctorName = doctor_obj['doctorName'];
+
     useEffect(()=>{
-        axios.post(`http://localhost:8081/doctor/consultation/${1}`)
+        axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
+        axios.post(`http://localhost:8081/doctor/consultation/${doctorId}`)
         .then((response)=>{
             setRoomId(response.data);  
             setLoad(true); 
@@ -19,7 +27,9 @@ const RoomPageDoctor=()=>{
     },[])
     if(!load)
     {
+        <LinearProgress />
         return <div>Loading...</div>;
+        
     }
     console.log(typeof(roomId))
     const roomnum=roomId.toString();
@@ -28,7 +38,7 @@ const RoomPageDoctor=()=>{
         
         const appID =2066795294
         const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
-        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,'123456','sudhanshu');
+        const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,'123456', doctorName);
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
         zp.joinRoom(
@@ -37,6 +47,9 @@ const RoomPageDoctor=()=>{
             scenario:{
                 mode:ZegoUIKitPrebuilt.VideoConference
             },
+            maxUsers: 2,
+            turnOnCameraWhenJoining:false,
+            turnOnMicrophoneWhenJoining:false,
         });
     }
 

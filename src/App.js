@@ -24,7 +24,7 @@ function App() {
         {/* <NavHead/> */}
         <Routes>
           <Route path='/' element={<Dashboard/>}></Route>
-          <Route path="/patient_login" element={<Login></Login>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
           <Route path='/doctor_login' element={<DoctorLogin/>}/>
           <Route path="/patientLogin"/>
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
@@ -33,7 +33,7 @@ function App() {
           <Route path='/DoctorPage' element={<DoctorPage/>}/>
           <Route path="/PatientDashboard" element={<PatientDashboard/>}/>
           <Route path="/VideoCall" element={<VideoCall/>}/>
-          <Route path="/room/:roomId" element={<RoomPage/>}></Route>
+          <Route path="/roomPatient" element={<RoomPage/>}></Route>
           <Route path="/DoctorProfile" element={<DoctorProfile/>}/>
           <Route path='/doctor-history' element={<DoctorHistory/>}></Route>
           {/* <Route path="/room" element={<RoomPage/>}></Route> */}

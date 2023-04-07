@@ -1,0 +1,14 @@
+.card-v{
+    align-items: center;
+    align-content: center;
+    margin-top: 0;
+    margin-left: 30%;
+    width: 550px;
+    height: 450px;
+    padding-left: 10px;
+}
+
+.conatainer-fluid-v{
+    margin-top: 20%;
+    width: min-content;
+}
