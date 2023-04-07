@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
 import "../../Css_files/PatientPage.css";
 import { type } from "@testing-library/user-event/dist/type";
+import NavHead from "../../components/Nav";
 
 export default function PatientPage() {
 
@@ -42,6 +43,7 @@ export default function PatientPage() {
 
   return (
     <>
+    <NavHead/>
     {lists===true? (
       <div className="blockCss">
          {patientList.map((patient,index)=>(

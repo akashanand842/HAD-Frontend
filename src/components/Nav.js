@@ -1,12 +1,13 @@
+import { blue, red } from "@mui/material/colors";
 import React from "react";
 
 function NavHead() {
   return (
     <nav
-      className="navbar navbar-expand-lg bg-body-tertiary"
-      style={{ border: "1px solid #eaf3f2" }}
+      className="navbar navbar-expand-lg"
+      style={{ border: "0px solid #eaf3f2", backgroundColor:"#EBF3F4"}}
     >
-      <div className="container-fluid">
+      <div className="container-fluid"> 
         <a className="navbar-brand" href="#">
           Tele-app
         </a>
@@ -38,16 +39,6 @@ function NavHead() {
                 About us
               </a>
             </li>
-            {/* <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="/">Action</a></li>
-            <li><a className="dropdown-item" href="/">Another action</a></li>
-            <li><a className="dropdown-item" href="/">Something else here</a></li>
-          </ul>
-        </li> */}
           </ul>
         </div>
       </div>

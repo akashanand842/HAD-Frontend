@@ -62,9 +62,6 @@ function Login() {
           })
 
         })
-        // navigate('/PatientPage',{
-        //  state:{patientNum:patientNumber}
-        //  })
       })
       .catch((error)=>{
           console.error('Error while fetch jwt')
@@ -103,8 +100,8 @@ function Login() {
   };
 
   const verifyOTP = (e) => {
-    let otp = e.target.value;
-    setOTP(otp);
+     let otp = OTP;
+    // setOTP(otp);
     if (otp.length === 6) {
       // console.log(otp);
       let confirmationResult = window.confirmationResult;
@@ -123,14 +120,30 @@ function Login() {
         });
     }
   };
+  const temp_otp = useState([]);
+  function clickEvent(curr,next){
+
+    if(document.getElementById(curr).value.length===1)
+    {
+    temp_otp[0][document.getElementById(curr).id] = document.getElementById(curr).value;
+
+      let temp = '';
+      for(let i=0;i<temp_otp[0].length;i++)   
+      {temp = temp+temp_otp[0][i];} 
+            
+    document.getElementById(next).focus();
+    setOTP(temp);
+    console.log(OTP);
+    }
+  }
  console.log(OTP);
   return (
     <>
     <NavHead/>
-     <div >
-         <div className="col-md-2 offset-md-8 box" >
-          <h3>Enter Your number</h3>
-          <div className="mb-2">
+     <div className="login_css">
+         <div className="box" >
+          <h2 className="text_css">Enter Your number</h2>
+          <div className="input_css">
             <PhoneInput
               defaultCountry="IN"
               international
@@ -138,15 +151,16 @@ function Login() {
               value={phoneNumber}
               onChange={setPhoneNumber}
             />
-          </div>
+            </div>
 
           {expandForm === true ? (
             <>
-              <div className="mp-3">
-                <h6>OTP</h6>
+              {/* <div className="mp-3">
+               
+                <h6 className="text_css">OTP</h6>
                 <input
                   type="number"
-                  className="form-control"
+                  className="input_css"
                   id="otpInput"
                   value={OTP}
                   onChange={verifyOTP}
@@ -155,12 +169,25 @@ function Login() {
                   Please enter the one time pin
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={verifyOTP}>submit</button>
-              </div>
+                
+              </div> */}
+              <div class="container">
+              <h2 className="h2l">ENTER OTP</h2>
+              <div class="userInput">
+            <input className="inp_css" type="text" id='0' maxLength="1" onKeyUp={()=>clickEvent('0','1')}/>
+            <input className="inp_css" type="text" id="1" maxLength="1" onChange={()=>clickEvent('1','2')}/>
+            <input className="inp_css" type="text" id="2" maxLength="1" onChange={()=>clickEvent('2','3')}/>
+            <input className="inp_css" type="text" id="3" maxLength="1" onChange={()=>clickEvent('3','4')}/>
+            <input className="inp_css" type="text" id="4" maxLength="1" onChange={()=>clickEvent('4','5')}/>
+            <input className="inp_css" type="text" id="5" maxLength="1" onChange={()=>clickEvent('5','sub')}/>
+        </div>
+        <button  id="sub" className="butt" onClick={verifyOTP}>SUBMIT</button>
+    </div>
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={gotoUserPage} >
-              Request Otp
+            <button type="submit" className="butt" onClick={gotoUserPage} >
+              Request OTP
             </button>
           ) : null}
           <div id="recaptcha-container"></div>
