@@ -13,15 +13,19 @@ const PatientSideNav = () => {
   
   const signOut=()=>{
     localStorage.removeItem('patient');
-    navigate('/patient_login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('patient_num');
+    navigate('/login');
   }
 
   const SwitchUser=()=>{
     
     const patient_obj=JSON.parse(localStorage.getItem('patient'));
+
     const patientNumber = patient_obj['phoneNumber'];
   
     localStorage.removeItem('patient');
+    
     navigate('/PatientPage',{
         state:{patientNum:patientNumber}
       })

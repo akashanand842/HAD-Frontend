@@ -12,7 +12,9 @@ const SideNav = () => {
   
   const signOut=()=>{
     localStorage.removeItem('doctor');
-    navigate('/doctor_login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('doctor_num');
+    navigate('/login');
   }
 
   const profile =()=>{

@@ -4,6 +4,7 @@ import "../../Css_files/DoctorPage.css"
 import { useNavigate } from 'react-router-dom';
 
 const DoctorPage = () => {
+  
   const doctor_obj = JSON.parse(localStorage.getItem('doctor'));
   const name = doctor_obj['doctorName']
   const navigate = useNavigate();

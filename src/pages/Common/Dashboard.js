@@ -6,7 +6,7 @@ import NavHead from '../../components/Nav';
 function Dashboard() {
     const navigate=useNavigate();
     const navigatePatientLogin=()=>{
-        navigate('/patient_login');
+        navigate('/login');
     }
     const navigateDoctorLogin=()=>{
         navigate('/doctor_login');
@@ -40,8 +40,6 @@ function Dashboard() {
                             <h5 className="card-title">Patient</h5>
                             <button type="button" class="btn btn-success" onClick={navigatePatientLogin}>Login</button>  
                             <button type="button" class="btn btn-success" onClick={navigateVideoCall}>VideoCall</button>
-                            {/* <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Prescription Download</button> */}
-                            {/* <button type="button" class="btn btn-primary" onClick={gotodownpatientpage}>patientpages</button> */}
                         </div>
                     </div>
                 </div>

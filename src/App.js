@@ -24,7 +24,7 @@ function App() {
         {/* <NavHead/> */}
         <Routes>
           <Route path='/' element={<Dashboard/>}></Route>
-          <Route path="/patient_login" element={<Login></Login>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
           <Route path='/doctor_login' element={<DoctorLogin/>}/>
           <Route path="/patientLogin"/>
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>

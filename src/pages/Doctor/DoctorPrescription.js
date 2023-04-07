@@ -1,20 +1,3 @@
-// import React from 'react'
-// import { useLocation } from 'react-router-dom'
-
-// //const location=useLocation();
-// export default function DoctorPrescription(props) {
-//   const location=useLocation();
-//   return (
-//     <div>
-//        <h2>{location.state.patient_name}</h2>
-//        <h2>{location.state.patient_age}</h2>
-//        <h2>{location.state.patient_gender}</h2>
-//         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-//         <h1>this is </h1>
-//         <textarea id="mybox" rows="2"></textarea>
-//     </div>
-//   )
-// }
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../Css_files/DoctorPrescription.css'
