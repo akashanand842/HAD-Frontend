@@ -4,7 +4,6 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import "../../Css_files/VideoCall.css"
-import { useMemo } from 'react';
 import PatientSideNav from '../../components/PatientSideNav';
 
 
@@ -15,7 +14,6 @@ const RoomPage=()=>{
     const roomId = Math.floor(Math.random() * (max - min + 1)) + min;
     const roomnum = roomId.toString();
     console.log(roomnum)
-    console.log(typeof(roomId))
     const jwtToken=localStorage.getItem('token');
     const patient_obj=JSON.parse(localStorage.getItem('patient'));
     const name = patient_obj['patientName'];
@@ -60,6 +58,7 @@ const RoomPage=()=>{
         });
         return ()=>{ console.log('return')}
     },[])
+
     return (
        <>
        <PatientSideNav/>

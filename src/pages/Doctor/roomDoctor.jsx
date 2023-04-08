@@ -5,11 +5,13 @@ import { useState,useEffect } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 import SideNav from '../../components/SideNav';
 import "../../Css_files/DoctorRoom.css";
+import { useNavigate } from 'react-router-dom';
 
 const RoomPageDoctor=()=>{
     
     const [roomId,setRoomId]=useState(123);
     const [load,setLoad]=useState(false);
+    const navigate =useNavigate();
 
     const doctor_obj = JSON.parse(localStorage.getItem('doctor'));
     const doctorId = doctor_obj['doctorId'];
@@ -36,7 +38,7 @@ const RoomPageDoctor=()=>{
     console.log(typeof(roomId))
     const roomnum=roomId.toString();
     console.log(roomnum);
-    const myMeeting =async (element) =>{
+    const myMeeting = (element) =>{
         
         const appID =2066795294
         const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
@@ -52,7 +54,12 @@ const RoomPageDoctor=()=>{
             maxUsers: 2,
             turnOnCameraWhenJoining:false,
             turnOnMicrophoneWhenJoining:false,
-            
+            showLeavingView: false,
+            onLeaveRoom: (()=>{
+                navigate('/add-prescription',{
+                    state:{patient_id:2,doctor_id:doctorId}
+                });
+            })
         });
     }
 
