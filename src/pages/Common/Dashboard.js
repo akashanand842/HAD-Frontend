@@ -24,7 +24,6 @@ function Dashboard() {
         navigate('/PatientPage')
     }
     const navigateVideoCall=()=>{
-        //const roomId= Math.floor(Math.random()*1000000);
         navigate('/roomPatient')
     }
     const gotoroomDoctor=()=>{
@@ -34,9 +33,7 @@ function Dashboard() {
         <>
         <NavHead/>
         <div className='card1'>
-        {/* <div className='card2'> */}
         <div className='card2' >
-            {/* <div className='card2'> */}
                 <button onClick={navigatePatientLogin}>Login</button>
                 
                 <button>SignUP</button>
