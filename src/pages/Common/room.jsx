@@ -1,10 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate} from 'react-router-dom';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import "../../Css_files/VideoCall.css"
 import { useMemo } from 'react';
+import PatientSideNav from '../../components/PatientSideNav';
+
 
 const RoomPage=()=>{
 
@@ -17,6 +19,9 @@ const RoomPage=()=>{
     const jwtToken=localStorage.getItem('token');
     const patient_obj=JSON.parse(localStorage.getItem('patient'));
     const name = patient_obj['patientName'];
+    const navigate = useNavigate();
+    const patientId = patient_obj['patientId'];
+    const patientNumber = patient_obj['phoneNumber'];
 
     const myMeeting =(element) =>{
 
@@ -34,13 +39,19 @@ const RoomPage=()=>{
             maxUsers: 2,
             turnOnCameraWhenJoining: false,
             turnOnMicrophoneWhenJoining: false,
+            showLeavingView: false,
+            onLeaveRoom: (()=>{
+              navigate('/PatientDashboard',{
+                 state:{patient_id:patientId}
+              })
+            })
         }
         )
     }
     
     useEffect(()=>{
         axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-        axios.post(`http://localhost:8081/patient/join-queue/${2}?roomId=${roomId}`,)
+        axios.post(`http://localhost:8081/patient/join-queue/${patientId}?roomId=${roomId}`,)
         .then((response)=>{
             console.log('queue success');
         })
@@ -50,10 +61,12 @@ const RoomPage=()=>{
         return ()=>{ console.log('return')}
     },[])
     return (
-       
-      <div>
-        <div className='RoomCss' ref={myMeeting()}></div>
+       <>
+       <PatientSideNav/>
+      <div className='RoomCss'>
+        <div ref={myMeeting}></div>
       </div>
+      </>
     )
 }
 

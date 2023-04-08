@@ -3,6 +3,8 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
+import SideNav from '../../components/SideNav';
+import "../../Css_files/DoctorRoom.css";
 
 const RoomPageDoctor=()=>{
     
@@ -50,12 +52,17 @@ const RoomPageDoctor=()=>{
             maxUsers: 2,
             turnOnCameraWhenJoining:false,
             turnOnMicrophoneWhenJoining:false,
+            
         });
     }
 
     return (
-        // <button onClick={myMeeting()}> click me</button>
-        <div ref={myMeeting()}></div>
+        <>
+        <SideNav/>
+        <div className='D_room'>
+        <div ref={myMeeting}></div>
+        </div>
+        </>
     )
 }
 

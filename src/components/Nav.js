@@ -8,7 +8,7 @@ function NavHead() {
       style={{ border: "0px solid #eaf3f2", backgroundColor:"#EBF3F4"}}
     >
       <div className="container-fluid"> 
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           Tele-app
         </a>
         <button

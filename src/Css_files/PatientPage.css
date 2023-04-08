@@ -17,9 +17,9 @@
   align-items: center;
 }
 .make-button{
-  width: 100px;
-  margin: 20px 65px;
-  background-color: beige;
+  width: 150px;
+  margin-left: 35px;
+  background-color: rgb(15, 108, 35);
 }
 .cursor{
     cursor: pointer;
