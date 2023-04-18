@@ -1,0 +1,85 @@
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import './../../Css_files/SignUp.css'
+import NavHead from "../../components/Nav";
+
+const SignUp = ({ setLoginUser }) => {
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    patientName:"",
+    age:undefined,
+    gender:"",
+    phoneNumber:"",
+    medicalHistory:""
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+   const submitUser=()=>{
+     axios.post('http://localhost:8081/authenticate/add',user)
+     .then((response)=>{
+        console.log(response);
+        navigate('/login');
+     })
+     .catch((error)=>{
+        console.error('error on submitting',error);
+        alert('Invalid Infomation');
+     })
+   }
+
+  return (
+    <>
+    <NavHead/>
+    <div className="signUp">
+    <div className="register">
+      {/* {console.log("user", user)} */}
+      <h2 className="text_css">Sign Up</h2>
+      <input
+        type="text"
+        name="patientName"
+        value={user.patientName}
+        placeholder="Patient Name"
+        onChange={handleChange}
+      ></input>
+      <input
+        type="number"
+        name="age"
+        placeholder="Age"
+        onChange={handleChange}
+      ></input>
+      <input
+        type="string"
+        name="gender"
+        value={user.gender}
+        placeholder="Gender"
+        onChange={handleChange}
+      ></input>
+      <input
+        type="string"
+        name="phoneNumber"
+        value={user.phoneNumber}
+        placeholder="Phone Number"
+        onChange={handleChange}
+      ></input>
+      <input
+        type="string"
+        name="medicalHistory"
+        value={user.medicalHistory}
+        placeholder="Medical History if any"
+        onChange={handleChange}
+      ></input>
+      <div type="submit" className="button" onClick={submitUser}> Submit </div>
+    </div>
+    </div>
+    </>
+  );
+};
+
+export default SignUp;

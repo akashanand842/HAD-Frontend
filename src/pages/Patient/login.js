@@ -116,8 +116,7 @@ function Login() {
           // ...
         })
         .catch((error) => {
-          // User couldn't sign in (bad verification code?)
-          // ...
+          alert('Invalid OTP');
         });
     }
   };
@@ -156,22 +155,6 @@ function Login() {
 
           {expandForm === true ? (
             <>
-              {/* <div className="mp-3">
-               
-                <h6 className="text_css">OTP</h6>
-                <input
-                  type="number"
-                  className="input_css"
-                  id="otpInput"
-                  value={OTP}
-                  onChange={verifyOTP}
-                />
-                <div>
-                  Please enter the one time pin
-                </div>
-                <button type="submit" className="btn btn-primary" onClick={verifyOTP}>submit</button>
-                
-              </div> */}
               <div class="container">
               <h2 className="h2l">ENTER OTP</h2>
               <div class="userInput">

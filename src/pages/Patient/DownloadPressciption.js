@@ -5,7 +5,9 @@ import axios from 'axios';
 export default function DownloadPressciption() {
    
 const [pdfUrl, setPdfUrl] = useState('');
+const jwtToken=localStorage.getItem('token');
 
+axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
   const handleDownloadClick = async () => {
     try {
         const response = await axios.get('http://localhost:8081/patient/prescription/2/2', {
