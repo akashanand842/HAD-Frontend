@@ -1,8 +1,18 @@
+.patient_background{
+  width: 100vw;
+  height: 89vh;
+  margin-top: 0%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  background-image: url("./../../public/img.svg/connected-health.jpg");
+}
+
 .blockCss{
     width: 300px;
     padding: 30px;
-    margin: auto;
     margin-top: 100px;
+    margin-left: 140vh;
     border: 2px solid #ccc;
     background-color: rgb(221, 235, 235);
 }

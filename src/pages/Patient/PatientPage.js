@@ -45,6 +45,7 @@ export default function PatientPage() {
     <>
     <NavHead/>
     {lists===true? (
+      <div className="patient_background">
       <div className="blockCss">
          {patientList.map((patient,index)=>(
             <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId,index)} >
@@ -54,6 +55,7 @@ export default function PatientPage() {
             </div>
          ))} 
         <button className="make-button" onClick={()=>setLists(false)}>+ Add New</button>
+     </div>
      </div>
     ):(
            <div className="myBox">
