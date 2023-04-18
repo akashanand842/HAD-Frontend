@@ -17,6 +17,7 @@ import DoctorPage from './pages/Doctor/DoctorPage';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import DoctorHistory from './pages/Doctor/DoctorHistory';
 import SignUp from './pages/Common/SignUp';
+import AddNewPatient from './pages/Patient/AddNewPatient';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/signUp' element={<SignUp/>}></Route>
           {/* <Route path="/room" element={<RoomPage/>}></Route> */}
           <Route path="/roomDoctor" element={<RoomPageDoctor/>}></Route>
+          <Route path="/addNew" element={<AddNewPatient/>}/>
         </Routes>
     </div>
   );

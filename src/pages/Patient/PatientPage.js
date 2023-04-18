@@ -44,53 +44,20 @@ export default function PatientPage() {
   return (
     <>
     <NavHead/>
-    {lists===true? (
       <div className="patient_background">
-      <div className="blockCss">
+      <div className="blockCss" id="style-15">
          {patientList.map((patient,index)=>(
-            <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId,index)} >
+            <div key={index} className="cursor" onClick={()=>handlePatientClick(patient.patientId,index) } >
                 <div className="adjust">
                       <h5>{patient.patientName} {patient.age}</h5>
                 </div>
             </div>
          ))} 
-        <button className="make-button" onClick={()=>setLists(false)}>+ Add New</button>
      </div>
+     <button className="make-button" onClick={()=> navigate('/addNew')}>+ Add New</button>
      </div>
-    ):(
-           <div className="myBox">
-             <div className="prescription-form">
-                <h2>Registration</h2>
-                <form>
-                  <label>
-                    Name:
-                    <input type="text" />
-                  </label>
+     
 
-                  <label>
-                    Age:
-                    <input type="text" />
-                  </label>
-                  <label>
-                    Phone Number:
-                    <input type="text" readOnly />
-                  </label>
-                  <label>
-                    Gender:
-                    <input type="text" />
-                  </label>
-                  <label>
-                    Medical History:
-                    <input type="text" />
-                  </label>
-                  <button className="btn btn-success" type="submit">
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-    )}
-    
     </>
   );
 }

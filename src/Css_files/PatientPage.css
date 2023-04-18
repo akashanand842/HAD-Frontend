@@ -8,13 +8,15 @@
   background-image: url("./../../public/img.svg/connected-health.jpg");
 }
 
-.blockCss{
-    width: 300px;
-    padding: 30px;
-    margin-top: 100px;
-    margin-left: 140vh;
-    border: 2px solid #ccc;
-    background-color: rgb(221, 235, 235);
+.blockCss {
+  width: 300px;
+  padding: 30px;
+  overflow-y: auto; /* Enables vertical scrolling when content overflows */
+  margin-top: 100px;
+  margin-left: 140vh;
+  max-height: 50vh;
+  border: 2px solid #ccc;
+  background-color: rgb(221, 235, 235);
 }
 
 .adjust{
@@ -28,7 +30,7 @@
 }
 .make-button{
   width: 150px;
-  margin-left: 35px;
+  margin-left: 154vh;
   background-color: rgb(15, 108, 35);
 }
 .cursor{
@@ -37,3 +39,28 @@
 .adjust:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
+
+  #style-15::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#style-15::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-15::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#aed4a8),
+									   to(#7eb880),
+									   color-stop(.6,#beeec2))
+}
