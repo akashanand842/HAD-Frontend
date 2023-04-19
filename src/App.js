@@ -7,11 +7,9 @@ import DoctorPrescription from './pages/Doctor/DoctorPrescription';
 import DownloadPressciption from './pages/Patient/DownloadPressciption';
 import PatientDashboard from './pages/Patient/PatientDashboard'
 import PatientPage from './pages/Patient/PatientPage';
-import PatientMenu from './pages/Patient/PatientMenu';
 import VideoCall from './pages/Common/VidoeCall'
 import RoomPage from './pages/Common/room';
 import RoomPageDoctor from './pages/Doctor/roomDoctor'
-import Test from './pages/Patient/Test';
 import DoctorLogin from './pages/Doctor/DoctorLogin';
 import DoctorPage from './pages/Doctor/DoctorPage';
 import DoctorProfile from './pages/Doctor/DoctorProfile';

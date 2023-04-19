@@ -13,3 +13,14 @@
     border: 2px solid #ccc;
     backgroundColor: rgb(221, 235, 235);
 }
+
+.background-img{
+    width: 85vw;
+    height: 100vh;
+    margin-top: 0%;
+    margin-left: 15vw;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    background-image: url("./../../public/img.svg/360_F_487692869_V8MZ1hLvhXQZKT50EV8Sh13AkdibGJb3.jpg");
+}

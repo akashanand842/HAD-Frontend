@@ -18,28 +18,19 @@ export default function PatientDashboard() {
   const name = patient_obj['patientName'];
   
  console.log(name);
-//   useEffect(()=>{
-//     axios.get(`http://localhost:8081/patient/get-patient/${pid}`)
-//     .then((response)=>{
-//       console.log(response.data);
-//       setPatient(response.data);
-//     })
-//     .catch((error)=>{
-//         console.error('Error while getting patient')
-//     });
-// },[]);
 const gotodownloadPrescription=()=>{
   navigate('/showPrescription')
 }
 
 const navigateVideoCall=()=>{
-  //const roomId= Math.floor(Math.random()*1000000);
   navigate('/roomPatient')
 }
   return (
     <>
+    <div className='background-img'>
     <PatientSideNav/>
     {/* <NavHead/> */}
+    
     <div className='centered'>
       <b>Hello {name} Welcome To Your Dashboard</b> 
       <div>
@@ -47,6 +38,7 @@ const navigateVideoCall=()=>{
       <button>Registration</button>  
       <button onClick={navigateVideoCall}>videoCall</button>
       </div>
+    </div>
     </div>
     </>
   )
