@@ -1,5 +1,5 @@
 .patient_background{
-  width: 100vw;
+  width: 100%;
   height: 89vh;
   margin-top: 0%;
   background-size: cover;
@@ -8,12 +8,16 @@
   background-image: url("./../../public/img.svg/connected-health.jpg");
 }
 
+/* .temp {
+  display: flex;
+  justify-content: end;
+} */
 .blockCss {
   width: 300px;
   padding: 30px;
   overflow-y: auto; /* Enables vertical scrolling when content overflows */
   margin-top: 100px;
-  margin-left: 140vh;
+  margin-left: 70%;
   max-height: 50vh;
   border: 2px solid #ccc;
   background-color: rgb(221, 235, 235);
@@ -30,7 +34,7 @@
 }
 .make-button{
   width: 150px;
-  margin-left: 154vh;
+  margin-left: 75%;
   background-color: rgb(15, 108, 35);
 }
 .cursor{

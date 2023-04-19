@@ -20,11 +20,12 @@ const RoomPage=()=>{
     const navigate = useNavigate();
     const patientId = patient_obj['patientId'];
     const patientNumber = patient_obj['phoneNumber'];
+    const specialization = localStorage.getItem('specialization');
 
     const myMeeting =(element) =>{
 
-        const appID =2066795294
-        const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
+        const appID =121940273
+        const serverSecret ="c774162ad11624d4246a0aee5fb875f3";
         const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,roomnum,name);
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 
@@ -49,7 +50,7 @@ const RoomPage=()=>{
     
     useEffect(()=>{
         axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-        axios.post(`http://localhost:8081/patient/join-queue/${patientId}?roomId=${roomId}`,)
+        axios.post(`http://localhost:8081/patient/join-queue/${patientId}/${specialization}?roomId=${roomId}`,)
         .then((response)=>{
             console.log('queue success');
         })

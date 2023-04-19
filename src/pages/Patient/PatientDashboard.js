@@ -30,13 +30,13 @@ const navigateVideoCall=()=>{
     <div className='background-img'>
     <PatientSideNav/>
     {/* <NavHead/> */}
-    
+    <h1 className='txt-css'>{name}</h1> 
+    <h2 className='txt-css2'>Welcome To Your Dashboard</h2> 
     <div className='centered'>
-      <b>Hello {name} Welcome To Your Dashboard</b> 
       <div>
       <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button> 
-      <button>Registration</button>  
-      <button onClick={navigateVideoCall}>videoCall</button>
+      <button onClick={()=>{ navigate('/registrationForm')}}>Appointment</button>  
+      {/* <button onClick={navigateVideoCall}>videoCall</button> */}
       </div>
     </div>
     </div>

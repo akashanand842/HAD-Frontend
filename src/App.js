@@ -10,12 +10,12 @@ import PatientPage from './pages/Patient/PatientPage';
 import VideoCall from './pages/Common/VidoeCall'
 import RoomPage from './pages/Common/room';
 import RoomPageDoctor from './pages/Doctor/roomDoctor'
-import DoctorLogin from './pages/Doctor/DoctorLogin';
 import DoctorPage from './pages/Doctor/DoctorPage';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import DoctorHistory from './pages/Doctor/DoctorHistory';
 import SignUp from './pages/Common/SignUp';
 import AddNewPatient from './pages/Patient/AddNewPatient';
+import RegistrationForm from './pages/Patient/RegistrationForm';
 
 
 function App() {
@@ -25,8 +25,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard/>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
-          <Route path='/doctor_login' element={<DoctorLogin/>}/>
-          <Route path="/patientLogin"/>
           <Route path="/add-prescription" element={<DoctorPrescription/>}/>
           <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
@@ -37,9 +35,9 @@ function App() {
           <Route path="/DoctorProfile" element={<DoctorProfile/>}/>
           <Route path='/doctor-history' element={<DoctorHistory/>}></Route>
           <Route path='/signUp' element={<SignUp/>}></Route>
-          {/* <Route path="/room" element={<RoomPage/>}></Route> */}
           <Route path="/roomDoctor" element={<RoomPageDoctor/>}></Route>
           <Route path="/addNew" element={<AddNewPatient/>}/>
+          <Route path="/registrationForm" element={<RegistrationForm/>}/>
         </Routes>
     </div>
   );

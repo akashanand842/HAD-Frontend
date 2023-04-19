@@ -40,8 +40,8 @@ const RoomPageDoctor=()=>{
     console.log(roomnum);
     const myMeeting = (element) =>{
         
-        const appID =2066795294
-        const serverSecret ="dd1496412c994d3e0f2b99f6717683e1";
+        const appID =121940273
+        const serverSecret ="c774162ad11624d4246a0aee5fb875f3";
         const kitToken =ZegoUIKitPrebuilt.generateKitTokenForTest(appID,serverSecret,roomnum,'123456', doctorName);
         const zp = ZegoUIKitPrebuilt.create(kitToken);
 

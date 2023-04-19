@@ -1,0 +1,78 @@
+.background-img{
+    width: 85vw;
+    height: 100vh;
+    margin-top: 0%;
+    margin-left: 15vw;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    background-image: url("./../../public/img.svg/360_F_487692869_V8MZ1hLvhXQZKT50EV8Sh13AkdibGJb3.jpg");
+}
+
+.box-css {
+    padding-top: 30px;
+    margin-left:60vh;
+    margin-right: 400px;
+    margin-top: 50px;
+    width: 400px;
+    height: 75vh;
+    border: 10px;
+    background-color: #9c9ea1;
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.box-css > input {
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 32px;
+    padding: 0.5rem 0.75rem;
+    width: 82%;
+    font-size: 1rem;
+}
+.box-css >select {
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 32px;
+    padding: 0.5rem 0.75rem;
+    width: 82%;
+    font-size: 1rem;
+}
+
+.box-css >textarea{
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 32px;
+    padding: 0.5rem 0.75rem;
+    width: 82%;
+    font-size: 1rem;
+}
+
+.label_css{
+    margin-left:5vh;
+    margin: 2vh;
+    font-family: arimo;
+    font-size: large;
+	color: black;
+}
+
+.button-cs{
+    width: 150px;
+	height: 40px;
+	margin: 15px auto 0px auto;
+	font-family: arimo;
+	font-size: 1.1rem;
+	border: none;
+	border-radius: 5px;
+	letter-spacing: 2px;
+    padding: 8px 45px;
+	cursor: pointer;
+	background: #474646; 
+    background: -webkit-linear-gradient(to right, #3e3f3f, #616161);  
+    background: linear-gradient(to right, #2f3030, #616161);
+}
