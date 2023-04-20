@@ -1,6 +1,5 @@
 .D_room{
-    margin-top: 5vh;
-    margin-left: 20vw;
-    width: 70vw;
-    height: 90vh;
+    left:0;
+    width: 50vmax;
+    height: 500px;
 }

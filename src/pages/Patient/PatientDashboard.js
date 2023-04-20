@@ -9,13 +9,19 @@ import NavHead from '../../components/Nav';
 
 
 export default function PatientDashboard() {
+  // window.location.reload(false);
   const location=useLocation();
   const [patient,setPatient]=useState([]);
   const pid=location.state.patient_id;
   const navigate=useNavigate();
+  const [name,setName] = useState('');
 
   const patient_obj=JSON.parse(localStorage.getItem('patient'));
-  const name = patient_obj['patientName'];
+
+  useEffect(()=>{
+    setName(patient_obj['patientName']);
+  })
+
   
  console.log(name);
 const gotodownloadPrescription=()=>{
@@ -29,7 +35,6 @@ const navigateVideoCall=()=>{
     <>
     <div className='background-img'>
     <PatientSideNav/>
-    {/* <NavHead/> */}
     <h1 className='txt-css'>{name}</h1> 
     <h2 className='txt-css2'>Welcome To Your Dashboard</h2> 
     <div className='centered'>
