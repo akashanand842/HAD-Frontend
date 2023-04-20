@@ -1,0 +1,29 @@
+.centeree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: auto;
+    width: auto;
+}
+
+
+.card-bodd {
+    width: auto;
+    height: auto;
+    margin-top: 12vh;
+    margin-left: 0;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+    max-width: 100dvh;
+    max-height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgb(247, 245, 242);
+}
+
+.formupp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }

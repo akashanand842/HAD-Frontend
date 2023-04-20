@@ -16,6 +16,8 @@ import DoctorHistory from './pages/Doctor/DoctorHistory';
 import SignUp from './pages/Common/SignUp';
 import AddNewPatient from './pages/Patient/AddNewPatient';
 import RegistrationForm from './pages/Patient/RegistrationForm';
+import PatientPrescriptionList from './pages/Patient/PatientPrescriptionList';
+import PatientProfile from './pages/Patient/PatientProfile';
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
           <Route path="/roomDoctor" element={<RoomPageDoctor/>}></Route>
           <Route path="/addNew" element={<AddNewPatient/>}/>
           <Route path="/registrationForm" element={<RegistrationForm/>}/>
+          <Route path='/patientPrescriptionList' element={<PatientPrescriptionList/>}></Route>
+          <Route path='/PatientProfile' element={<PatientProfile/>}/>
         </Routes>
     </div>
   );

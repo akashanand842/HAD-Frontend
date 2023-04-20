@@ -152,18 +152,21 @@ const RoomPageDoctor=() =>
         })
     },[])
 
-        if(!load)
-    {
-        return <div>Loading...</div>;
+    //     if(!load)
+    // {
+    //     return <div>Loading...</div>;
         
-    }
+    // }
 
+    const roomnum=roomId.toString();
 
     const myMeeting=async(element)=> {
         const appID = 121940273 ;
         const serverSecret = "c774162ad11624d4246a0aee5fb875f3";
-        const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomId, Date.now().toString(), doctorName); 
+        const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomnum, Date.now().toString(), doctorName); 
+
         const zp= ZegoUIKitPrebuilt.create(kitToken);
+
         zp.joinRoom({
           container:element,
           scenario:{
@@ -175,6 +178,7 @@ const RoomPageDoctor=() =>
           turnOnMicrophoneWhenJoining: false,
           turnOnCameraWhenJoining: false,
           showLeavingView: false,
+
         onLeaveRoom: (()=>{
                 navigate('/add-prescription',{
                     state:{patient_id:2,doctor_id:doctorId}
@@ -202,8 +206,7 @@ const RoomPageDoctor=() =>
 
           <Grid container spacing={2}>
 
-            <Grid item xs={8} style={{ width: '84vw', height: '94vh' }} ref={myMeeting}>
-            </Grid>
+            <Grid item xs={8} style={{ width: '84vw', height: '94vh' }} ref={myMeeting}></Grid>
 
             <Grid item xs={4}>
                 <Paper sx={{marginTop:'20px',marginRight:'20px' , padding:'32px', justifyContent:'center'}} elevation={4} >

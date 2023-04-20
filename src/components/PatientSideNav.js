@@ -14,6 +14,15 @@ const PatientSideNav = () => {
   const patientNumber = patient_obj['phoneNumber'];
   const patientId = patient_obj['patinetId'];
   const navigate=useNavigate();
+
+  const goToPrescriptions = () =>{
+    navigate('/patientPrescriptionList');
+  }
+
+  const gotoPatientProfile=()=>{
+    navigate('/PatientProfile');
+  }
+
   
   const signOut=()=>{
     localStorage.removeItem('patient');
@@ -45,7 +54,7 @@ const PatientSideNav = () => {
             <div className='sidebaricon'><HomeIcon/></div>
             <li className="sidebartitle">Home</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={gotoPatientProfile}>
             <div className='sidebaricon'><AccountBoxIcon/></div>
             <li className="sidebartitle">Profile</li>
             </div>
@@ -53,7 +62,7 @@ const PatientSideNav = () => {
             <div className='sidebaricon'><ManageSearchIcon/></div>
             <li className="sidebartitle">History</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={goToPrescriptions}>
             <div className='sidebaricon'> <MedicationIcon/></div>
             <li className="sidebartitle">Prescriptions</li>
             </div>
