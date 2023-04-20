@@ -3,10 +3,10 @@ import axios from 'axios';
 import '../../Css_files/DoctorPrescription.css'
 import { useLocation } from 'react-router-dom'
 import { duration } from '@mui/material';
+import SideNav from '../../components/SideNav';
 
 export default function DoctorPrescription(props) {
-  const [patientName, setPatientName] = useState('');
-  const [doctorName, setDoctorName] = useState('');
+  const [patientName, setPatientName] = useState('skChauhan');
   const [medicalFinding, setMedicalFinding] = useState('');
   const [medicineName, setMedicineName] = useState('');
   const [dosage, setDosage] = useState('');
@@ -15,14 +15,11 @@ export default function DoctorPrescription(props) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const location=useLocation();
-  // const doc = {
-  //   "doctorId" : location.state.doctor_id
-  // }
-  // const patient = {
-  //   "patientId" : location.state.patient_id
-  // }
 
-  //console.log(location.state.doctor_id);
+  const jwtToken=localStorage.getItem('token');
+  const doctor_obj = JSON.parse(localStorage.getItem('doctor'));
+  const doctorName = doctor_obj['doctorName']
+
   useEffect(() => {
     // Fetch patient and doctor names from backend via API
     axios.get(`http://localhost:8081/patient/get-name/${location.state.patient_id}`)
@@ -34,25 +31,12 @@ export default function DoctorPrescription(props) {
         console.error('Error fetching patient and doctor names:', error);
       });
   }, []);
-  useEffect(() => {
-    // Fetch patient and doctor names from backend via API
-    axios.get(`http://localhost:8081/doctor/get-name/${location.state.doctor_id}`)
-      .then((response) => {
-        // setPatientName(response.data.patientName);
-        setDoctorName(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching patient and doctor names:', error);
-      });
-  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitting(true);
 
     const prescription = {
-      // patientName: patientName,
-      // doctorName: doctorName,
       date : new Date(),
       medicalFinding: medicalFinding,
       medicineName: medicineName,
@@ -61,6 +45,8 @@ export default function DoctorPrescription(props) {
     };
 
     // Send prescription data to backend via API
+   
+    axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
     axios.post(`http://localhost:8081/doctor/add/prescription/${location.state.patient_id}/${location.state.doctor_id}`, prescription)
       .then((response) => {
         setSubmitting(false);
@@ -76,6 +62,8 @@ export default function DoctorPrescription(props) {
   };
 
   return (
+  <>
+  <SideNav/>
     <div className='myBox'>
     <div className="prescription-form">
       <h2>Add Prescription</h2>
@@ -127,6 +115,7 @@ export default function DoctorPrescription(props) {
       </form>
     </div>
     </div>
+    </>
 //   <div className='container' style={{padding: '30px'}}>
 //   <div className="prescription-form">
 //   <h2>Add Prescription</h2>
@@ -173,5 +162,6 @@ export default function DoctorPrescription(props) {
 // </div>
 // </div>
   );
+
 }
 

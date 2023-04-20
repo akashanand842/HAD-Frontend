@@ -2,74 +2,73 @@ import { useState } from "react";
 import { authentication } from "../../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import 'react-phone-number-input/style.css'
-import '../../Css_files/LoginPage.css'
-import PhoneInput from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
+import "../../Css_files/LoginPage.css";
+import PhoneInput from "react-phone-number-input";
 import NavHead from "../../components/Nav";
-import SmsIcon from '@mui/icons-material/Sms';
+import SmsIcon from "@mui/icons-material/Sms";
 import axios from "axios";
 
 function Login() {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [expandForm, setExpandForm] = useState(false);
-  const [OTP, setOTP] = useState('');
-  const navigate=useNavigate();
+  const [OTP, setOTP] = useState("");
+  const navigate = useNavigate();
 
-  const gotoUserPage=(e)=>{
-    let patientNumber=phoneNumber.slice(-10);
-    console.log(typeof(patientNumber));
-    axios.post('http://localhost:8081/authenticate',{
+  const gotoUserPage = (e) => {
+    let patientNumber = phoneNumber.slice(-10);
+    console.log(typeof patientNumber);
+    axios
+      .post("http://localhost:8081/authenticate", {
         username: patientNumber,
-        password: patientNumber
+        password: patientNumber,
       })
-      .then((response)=>{
-
+      .then((response) => {
         console.log(response.data.jwtToken);
-        localStorage.setItem('token',response.data.jwtToken);
-        const jwtToken=localStorage.getItem('token');
-        axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-        
-        axios.get('http://localhost:8081/doctor/role',{
-          params:{ phoneNumber: patientNumber}
-        })
-        .then((response)=>{
-          
-          localStorage.setItem('doctor_num',patientNumber);
-          axios.get(`http://localhost:8081/doctor/doctor-by-contact/${patientNumber}`)
-          .then((response)=>{
-            console.log(response.data);
-            localStorage.setItem('doctor', JSON.stringify(response.data));
-            navigate('/DoctorPage')
-          })
-          .catch((error)=>{
-          console.error('error on fatching doctor object',error);
-          })
-        })
+        localStorage.setItem("token", response.data.jwtToken);
+        const jwtToken = localStorage.getItem("token");
+        axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
-        .catch(()=>{
-
-          axios.get('http://localhost:8081/patient/role',{
-            params:{ phoneNumber: patientNumber}
+        axios
+          .get("http://localhost:8081/doctor/role", {
+            params: { phoneNumber: patientNumber },
           })
-          .then(()=>{
-            localStorage.setItem('patient_num',patientNumber);
-            navigate('/PatientPage',{
-              state:{patientNum:patientNumber}
+          .then((response) => {
+            localStorage.setItem("doctor_num", patientNumber);
+            axios
+              .get(
+                `http://localhost:8081/doctor/doctor-by-contact/${patientNumber}`
+              )
+              .then((response) => {
+                console.log(response.data);
+                localStorage.setItem("doctor", JSON.stringify(response.data));
+                navigate("/DoctorPage");
               })
-          })
-          .catch(()=>{
-            alert("Sign up First");
+              .catch((error) => {
+                console.error("error on fatching doctor object", error);
+              });
           })
 
-        })
-        // navigate('/PatientPage',{
-        //  state:{patientNum:patientNumber}
-        //  })
+          .catch(() => {
+            axios
+              .get("http://localhost:8081/patient/role", {
+                params: { phoneNumber: patientNumber },
+              })
+              .then(() => {
+                localStorage.setItem("patient_num", patientNumber);
+                navigate("/PatientPage", {
+                  state: { patientNum: patientNumber },
+                });
+              })
+              .catch(() => {
+                alert("Sign up First");
+              });
+          });
       })
-      .catch((error)=>{
-          console.error('Error while fetch jwt')
+      .catch((error) => {
+        console.error("Error while fetch jwt");
       });
-  }
+  };
 
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
@@ -97,14 +96,14 @@ function Login() {
           console.log("here");
         })
         .catch((error) => {
-          console.log('not getting otp');
+          console.log("not getting otp");
         });
     }
   };
 
   const verifyOTP = (e) => {
-    let otp = e.target.value;
-    setOTP(otp);
+    let otp = OTP;
+    // setOTP(otp);
     if (otp.length === 6) {
       // console.log(otp);
       let confirmationResult = window.confirmationResult;
@@ -118,19 +117,34 @@ function Login() {
           // ...
         })
         .catch((error) => {
-          // User couldn't sign in (bad verification code?)
-          // ...
+          alert("Invalid OTP");
         });
     }
   };
- console.log(OTP);
+  const temp_otp = useState([]);
+  function clickEvent(curr, next) {
+    if (document.getElementById(curr).value.length === 1) {
+      temp_otp[0][document.getElementById(curr).id] =
+        document.getElementById(curr).value;
+
+      let temp = "";
+      for (let i = 0; i < temp_otp[0].length; i++) {
+        temp = temp + temp_otp[0][i];
+      }
+
+      document.getElementById(next).focus();
+      setOTP(temp);
+      console.log(OTP);
+    }
+  }
+  console.log(OTP);
   return (
     <>
-    <NavHead/>
-     <div >
-         <div className="col-md-2 offset-md-8 box" >
-          <h3>Enter Your number</h3>
-          <div className="mb-2">
+      <NavHead />
+      <div className="login_css">
+        <div className="box">
+          <h2 className="text_css">Enter Your number</h2>
+          <div className="input_css">
             <PhoneInput
               defaultCountry="IN"
               international
@@ -142,30 +156,66 @@ function Login() {
 
           {expandForm === true ? (
             <>
-              <div className="mp-3">
-                <h6>OTP</h6>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="otpInput"
-                  value={OTP}
-                  onChange={verifyOTP}
-                />
-                <div>
-                  Please enter the one time pin
+              <div class="container">
+                <h2 className="h2l">ENTER OTP</h2>
+                <div class="userInput">
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="0"
+                    maxLength="1"
+                    onKeyUp={() => clickEvent("0", "1")}
+                  />
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="1"
+                    maxLength="1"
+                    onChange={() => clickEvent("1", "2")}
+                  />
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="2"
+                    maxLength="1"
+                    onChange={() => clickEvent("2", "3")}
+                  />
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="3"
+                    maxLength="1"
+                    onChange={() => clickEvent("3", "4")}
+                  />
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="4"
+                    maxLength="1"
+                    onChange={() => clickEvent("4", "5")}
+                  />
+                  <input
+                    className="inp_css"
+                    type="text"
+                    id="5"
+                    maxLength="1"
+                    onChange={() => clickEvent("5", "sub")}
+                  />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={verifyOTP}>submit</button>
+                <button id="sub" className="butt" onClick={verifyOTP}>
+                  SUBMIT
+                </button>
               </div>
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="btn btn-primary" onClick={gotoUserPage} >
-              Request Otp
+            <button type="submit" className="butt" onClick={gotoUserPage}>
+              Request OTP
             </button>
           ) : null}
           <div id="recaptcha-container"></div>
         </div>
-        </div>
+      </div>
     </>
   );
 }

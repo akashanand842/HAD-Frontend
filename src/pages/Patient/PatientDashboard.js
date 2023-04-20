@@ -9,44 +9,41 @@ import NavHead from '../../components/Nav';
 
 
 export default function PatientDashboard() {
+  // window.location.reload(false);
   const location=useLocation();
   const [patient,setPatient]=useState([]);
   const pid=location.state.patient_id;
   const navigate=useNavigate();
+  const [name,setName] = useState('');
 
   const patient_obj=JSON.parse(localStorage.getItem('patient'));
-  const name = patient_obj['patientName'];
+
+  useEffect(()=>{
+    setName(patient_obj['patientName']);
+  })
+
   
  console.log(name);
-//   useEffect(()=>{
-//     axios.get(`http://localhost:8081/patient/get-patient/${pid}`)
-//     .then((response)=>{
-//       console.log(response.data);
-//       setPatient(response.data);
-//     })
-//     .catch((error)=>{
-//         console.error('Error while getting patient')
-//     });
-// },[]);
 const gotodownloadPrescription=()=>{
   navigate('/showPrescription')
 }
 
 const navigateVideoCall=()=>{
-  //const roomId= Math.floor(Math.random()*1000000);
   navigate('/roomPatient')
 }
   return (
     <>
+    <div className='background-img'>
     <PatientSideNav/>
-    {/* <NavHead/> */}
+    <h1 className='txt-css'>{name}</h1> 
+    <h2 className='txt-css2'>Welcome To Your Dashboard</h2> 
     <div className='centered'>
-      <b>Hello {name} Welcome To Your Dashboard</b> 
       <div>
       <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button> 
-      <button>Registration</button>  
-      <button onClick={navigateVideoCall}>videoCall</button>
+      <button onClick={()=>{ navigate('/registrationForm')}}>Appointment</button>  
+      {/* <button onClick={navigateVideoCall}>videoCall</button> */}
       </div>
+    </div>
     </div>
     </>
   )

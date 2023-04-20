@@ -1,0 +1,30 @@
+.card1{
+    width: 100vw;
+    height: 89vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url("./../../public/img.svg/connected-health.jpg");
+}
+.card2{
+    padding-top: 100px;
+    padding-left:800px ;
+    width:1100px;
+    /* height:1100px; */
+}
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
