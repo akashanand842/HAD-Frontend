@@ -35,71 +35,8 @@ const PatientPrescriptionList = () => {
       console.error("error on downloading prescription");
     }
   };
-  const tmp = [
-    {
-      id: 1,
-      date: "30/01/2023",
-      doctorName: "Dr Akash",
-    },
-    {
-      id: 2,
-      date: "31/01/2023",
-      doctorName: "Dr Skash",
-    },
-    {
-      id: 3,
-      date: "1/02/2023",
-      doctorName: "Dr Kash",
-    },
-    {
-      id: 4,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 5,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 6,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 7,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 8,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 9,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 10,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 11,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-    {
-      id: 12,
-      date: "2/01/2023",
-      doctorName: "Dr Asha",
-    },
-  ];
 
-  const [obj, setObj] = useState(tmp);
-  const [ex, setEx] = useState([]);
+  const [obj, setObj] = useState([]);
   const columns = [
     {
       name: "Date",
