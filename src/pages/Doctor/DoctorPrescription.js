@@ -36,8 +36,9 @@ export default function DoctorPrescription(props) {
     event.preventDefault();
     setSubmitting(true);
 
+console.log(formattedDate);
     const prescription = {
-      date : new Date(),
+      date : formattedDate,
       medicalFinding: medicalFinding,
       medicineName: medicineName,
       dosage: dosage,
