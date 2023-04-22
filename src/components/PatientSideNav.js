@@ -45,6 +45,9 @@ const PatientSideNav = () => {
       state:{patient_id:patientId}
    })
   }
+  const goToHistory = () => {
+    navigate('/patientHistory');
+  }
 
   return (
     <>
@@ -58,7 +61,7 @@ const PatientSideNav = () => {
             <div className='sidebaricon'><AccountBoxIcon/></div>
             <li className="sidebartitle">Profile</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={goToHistory}>
             <div className='sidebaricon'><ManageSearchIcon/></div>
             <li className="sidebartitle">History</li>
             </div>
