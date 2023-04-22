@@ -25,18 +25,16 @@ const DoctorHistory = () => {
       selector: (row) => row.patientName,
     },
   ];
-  useEffect(async () => {
-      await axios.get(
-          `http://localhost:8081/doctor/get-history/${doctorContact}`
-      )
+  const jwtToken = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
+  useEffect(() => {
+      axios.get(`http://localhost:8081/doctor/get-history/${doctorContact}`)
       .then((response) => {
         setObj(response.data);
       })
       .catch((e) => {
         console.log(e);
       })
-      
-
   }, []);
 
   const paginationComponentOptions = {
