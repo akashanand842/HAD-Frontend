@@ -19,7 +19,7 @@ function Login() {
     let patientNumber = phoneNumber.slice(-10);
     console.log(typeof patientNumber);
     axios
-      .post("http://localhost:8081/authenticate", {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/authenticate`, {
         username: patientNumber,
         password: patientNumber,
       })
@@ -29,14 +29,14 @@ function Login() {
         axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
         axios
-          .get("http://localhost:8081/doctor/role", {
+          .get(`${process.env.REACT_APP_BACKEND_URL}/doctor/role`, {
             params: { phoneNumber: patientNumber },
           })
           .then((response) => {
             localStorage.setItem("doctor_num", patientNumber);
             axios
               .get(
-                `http://localhost:8081/doctor/doctor-by-contact/${patientNumber}`
+                `${process.env.REACT_APP_BACKEND_URL}/doctor/doctor-by-contact/${patientNumber}`
               )
               .then((response) => {
                 console.log(response.data);
@@ -50,7 +50,7 @@ function Login() {
 
           .catch(() => {
             axios
-              .get("http://localhost:8081/patient/role", {
+              .get(`${process.env.REACT_APP_BACKEND_URL}/patient/role`, {
                 params: { phoneNumber: patientNumber },
               })
               .then(() => {

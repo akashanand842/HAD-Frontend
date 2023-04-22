@@ -39,7 +39,7 @@ const RoomPage=()=>{
             showLeavingView: false,
             onLeaveRoom: (()=>{
               axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-              axios.post(`http://localhost:8081/patient/left-queue/${patientId}`)
+              axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/left-queue/${patientId}`)
               .then((response)=>{
                 console.log(response);
               })
@@ -57,7 +57,7 @@ const RoomPage=()=>{
     
     useEffect(()=>{
         axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-        axios.post(`http://localhost:8081/patient/join-queue/${patientId}/${specialization}?roomId=${roomId}`,)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/join-queue/${patientId}/${specialization}?roomId=${roomId}`,)
         .then((response)=>{
             console.log('queue success');
         })

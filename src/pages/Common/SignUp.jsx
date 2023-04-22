@@ -23,7 +23,7 @@ const SignUp = ({ setLoginUser }) => {
     });
   };
    const submitUser=()=>{
-     axios.post('http://localhost:8081/authenticate/add',user)
+     axios.post(`${process.env.REACT_APP_BACKEND_URL}/authenticate/add`,user)
      .then((response)=>{
         console.log(response);
         navigate('/login');

@@ -10,7 +10,7 @@ export const PatientHistory = () => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
   useEffect(() => {
     const getConsultations = async() => {
-        await axios.get(`http://localhost:8081/patient/get-history-patient/${patientId}`)
+        await axios.get(`${process.env.REACT_APP_BACKEND_URL}/patient/get-history-patient/${patientId}`)
         .then((response) => {
             console.log(response.data);
             setObj(response.data);

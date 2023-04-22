@@ -19,7 +19,7 @@ const PatientPrescriptionList = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8081/patient/prescription/${prescriptionId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/patient/prescription/${prescriptionId}`,
         {
           responseType: "blob",
         }
@@ -68,7 +68,7 @@ const PatientPrescriptionList = () => {
   ];
     useEffect( () => {
       const prescriptions = async () =>{
-          await axios.get(`http://localhost:8081/patient/prescription-list/${patientId}`)
+          await axios.get(`${process.env.REACT_APP_BACKEND_URL}/patient/prescription-list/${patientId}`)
           .then((response) => {
               setObj(response.data);
               console.log(obj);

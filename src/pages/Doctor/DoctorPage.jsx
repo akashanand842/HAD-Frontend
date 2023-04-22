@@ -20,7 +20,7 @@ const navigate = useNavigate();
   
 useEffect(()=>{
   const currsize = setInterval(()=>{
-    axios.get(`http://localhost:8081/doctor/queue-size/${doctorId}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/doctor/queue-size/${doctorId}`)
     .then((Response)=>{
       console.log(Response);
       setQueue(Response.data);

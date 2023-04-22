@@ -29,7 +29,7 @@ const DoctorHistory = () => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
   useEffect(() => {
     axios
-      .get(`http://localhost:8081/doctor/get-history/${doctorContact}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/doctor/get-history/${doctorContact}`)
       .then((response) => {
         setObj(response.data);
       })

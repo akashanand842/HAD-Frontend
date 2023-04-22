@@ -29,7 +29,7 @@ export default function PatientPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8081/patient/patient-list/phone-number", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/patient/patient-list/phone-number`, {
         params: { phoneNumber: `${location.state.patientNum}` },
       })
       .then((response) => {

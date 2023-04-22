@@ -84,12 +84,12 @@ const RoomPageDoctor = () => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
   useEffect(async () => {
-      await axios.post(`http://localhost:8081/doctor/consultation/${doctorId}`)
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/doctor/consultation/${doctorId}`)
         .then((response) => {
           setRoomId(response.data.first);
           setAppointment({ ...appointment, patientId: response.data.first });
           setLoad(true);
-          axios.get(`http://localhost:8081/doctor/get-appointment-details/${response.data.first}`)
+          axios.get(`${process.env.REACT_APP_BACKEND_URL}/doctor/get-appointment-details/${response.data.first}`)
                .then((response) => {
                 console.log(response.data);
                 setAppointment(response.data);
@@ -170,7 +170,7 @@ const RoomPageDoctor = () => {
  const submitPrescription = async () => {
     setPrescriptionSubmit(true);
     axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-    await axios.post(`http://localhost:8081/doctor/add/prescription/${roomId}/${doctorId}`, prescription)
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/doctor/add/prescription/${roomId}/${doctorId}`, prescription)
       .then((response) => {
           console.log(response);
       })

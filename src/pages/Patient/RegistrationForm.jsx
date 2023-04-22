@@ -30,7 +30,7 @@ const RegistrationForm = () => {
         console.log(data);
         const jwtToken=localStorage.getItem('token');
         axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-            await axios.post(`http://localhost:8081/patient/appointment/${patientId}`,data)
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/appointment/${patientId}`,data)
             .then((response) => {
                 console.log(response)
                 localStorage.setItem('specialization',data.specialization);
