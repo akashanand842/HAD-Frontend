@@ -21,7 +21,8 @@ const DoctorProfile = () => {
     //api call
   };
   return (
-    <>
+    <> 
+      <div className="doctor_background">
       <SideNav />
       <div className="centere">
         <div className="card-bod">
@@ -127,6 +128,7 @@ const DoctorProfile = () => {
             </>
           )}
         </div>
+      </div>
       </div>
     </>
   );

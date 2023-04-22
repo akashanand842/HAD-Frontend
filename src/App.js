@@ -16,6 +16,7 @@ import AddNewPatient from './pages/Patient/AddNewPatient';
 import RegistrationForm from './pages/Patient/RegistrationForm';
 import PatientPrescriptionList from './pages/Patient/PatientPrescriptionList';
 import PatientProfile from './pages/Patient/PatientProfile';
+import { PatientHistory } from './pages/Patient/PatientHistory';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/registrationForm" element={<RegistrationForm/>}/>
           <Route path='/patientPrescriptionList' element={<PatientPrescriptionList/>}></Route>
           <Route path='/PatientProfile' element={<PatientProfile/>}/>
+          <Route path='/patientHistory' element={<PatientHistory/>}></Route>
         </Routes>
     </div>
   );
