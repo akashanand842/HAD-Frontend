@@ -3,8 +3,6 @@ import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
 import NavHead from "./components/Nav";
 import Dashboard from './pages/Common/Dashboard';
 import Login from './pages/Patient/login'
-import DoctorPrescription from './pages/Doctor/DoctorPrescription';
-import DownloadPressciption from './pages/Patient/DownloadPressciption';
 import PatientDashboard from './pages/Patient/PatientDashboard'
 import PatientPage from './pages/Patient/PatientPage';
 import VideoCall from './pages/Common/VidoeCall'
@@ -28,8 +26,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard/>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/add-prescription" element={<DoctorPrescription/>}/>
-          <Route path="/showPrescription" element={<DownloadPressciption/>}/>
           <Route path="/PatientPage" element={<PatientPage/>}/>
           <Route path='/DoctorPage' element={<DoctorPage/>}/>
           <Route path="/PatientDashboard" element={<PatientDashboard/>}/>
