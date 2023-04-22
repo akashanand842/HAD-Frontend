@@ -9,11 +9,6 @@ import PatientSideNav from '../../components/PatientSideNav';
 
 const RoomPage=()=>{
 
-    // const min = 100000;
-    // const max = 999999;
-    // const roomId = Math.floor(Math.random() * (max - min + 1)) + min;
-    // const roomnum = roomId.toString();
-    // console.log(roomnum)
     const jwtToken=localStorage.getItem('token');
     const patient_obj=JSON.parse(localStorage.getItem('patient'));
     const name = patient_obj['patientName'];

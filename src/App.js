@@ -5,7 +5,6 @@ import Dashboard from './pages/Common/Dashboard';
 import Login from './pages/Patient/login'
 import PatientDashboard from './pages/Patient/PatientDashboard'
 import PatientPage from './pages/Patient/PatientPage';
-import VideoCall from './pages/Common/VidoeCall'
 import RoomPage from './pages/Common/room';
 import RoomPageDoctor from './pages/Doctor/roomDoctor'
 import DoctorPage from './pages/Doctor/DoctorPage';
@@ -28,7 +27,6 @@ function App() {
           <Route path="/PatientPage" element={<PatientPage/>}/>
           <Route path='/DoctorPage' element={<DoctorPage/>}/>
           <Route path="/PatientDashboard" element={<PatientDashboard/>}/>
-          <Route path="/VideoCall" element={<VideoCall/>}/>
           <Route path="/roomPatient" element={<RoomPage/>}></Route>
           <Route path="/DoctorProfile" element={<DoctorProfile/>}/>
           <Route path='/doctor-history' element={<DoctorHistory/>}></Route>

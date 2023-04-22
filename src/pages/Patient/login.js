@@ -24,7 +24,6 @@ function Login() {
         password: patientNumber,
       })
       .then((response) => {
-        console.log(response.data.jwtToken);
         localStorage.setItem("token", response.data.jwtToken);
         const jwtToken = localStorage.getItem("token");
         axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
