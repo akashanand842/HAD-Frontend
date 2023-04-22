@@ -6,6 +6,7 @@ import "../../Css_files/PatientPage.css";
 import { type } from "@testing-library/user-event/dist/type";
 import NavHead from "../../components/Nav";
 
+
 export default function PatientPage() {
   const navigate = useNavigate();
   const location = useLocation();
