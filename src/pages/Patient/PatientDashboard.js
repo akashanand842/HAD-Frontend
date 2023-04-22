@@ -39,9 +39,7 @@ const navigateVideoCall=()=>{
     <h2 className='txt-css2'>Welcome To Your Dashboard</h2> 
     <div className='centered'>
       <div>
-      <button type="button" class="btn btn-primary" onClick={gotodownloadPrescription}>Download pres.</button> 
-      <button onClick={()=>{ navigate('/registrationForm')}}>Appointment</button>  
-      {/* <button onClick={navigateVideoCall}>videoCall</button> */}
+      <button onClick={()=>{ navigate('/registrationForm')}}>Appointment</button>
       </div>
     </div>
     </div>

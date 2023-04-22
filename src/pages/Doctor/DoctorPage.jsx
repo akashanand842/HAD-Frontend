@@ -28,7 +28,7 @@ useEffect(()=>{
     .catch((error)=>{
       console.error('error on fatching size',error);
     })
-  },10000)
+  },5000)
   console.log(queue);
   return ()=>{clearInterval(currsize);}
 },[queue])

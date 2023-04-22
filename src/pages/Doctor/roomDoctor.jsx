@@ -138,6 +138,7 @@ const label = { inputProps: { "aria-label": "Switch demo" } };
 const RoomPageDoctor = () => {
   const [roomId, setRoomId] = useState(123);
   const [load, setLoad] = useState(false);
+  const [prescriptionSubmit, setPrescriptionSubmit] = useState(false);
   const [appointment, setAppointment] = useState({
     symptoms: "Fever",
     specialization: "Physician",
@@ -244,9 +245,10 @@ const RoomPageDoctor = () => {
     setInputFields([...inputField, newField]);
   };
 
- const submitPrescription=()=>{
+ const submitPrescription = async () => {
+    setPrescriptionSubmit(true);
     axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
-    axios.post(`http://localhost:8081/doctor/add/prescription/${roomId}/${doctorId}`, prescription)
+    await axios.post(`http://localhost:8081/doctor/add/prescription/${roomId}/${doctorId}`, prescription)
       .then((response) => {
           console.log(response);
       })
@@ -272,23 +274,43 @@ const RoomPageDoctor = () => {
               marginRight: "20px",
               padding: "32px",
               justifyContent: "center",
+              height: "630px",
+              overflow: "auto",
             }}
             elevation={4}
           >
             <Typography>Patient Name:</Typography>
 
             {/* Health Record Table */}
-            <Card sx={{ minWidth: 275, margin: "10px" }}>
+            <Card
+              sx={{
+                minWidth: 275,
+                margin: "10px",
+                padding: "20px",
+                boxShadow: "none",
+                backgroundColor: "#f0f0f0",
+              }}
+            >
               <CardContent>
-                <Typography variant="h5" component="h2">
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  sx={{ marginBottom: "10px" }}
+                >
                   Appointment Details
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {appointment.date}
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  <strong>Date:</strong> {appointment.date}
                 </Typography>
-                <Typography variant="body2">{`Symptoms: ${appointment.symptoms}`}</Typography>
-                <Typography variant="body2">{`Specialization: ${appointment.specialization}`}</Typography>
-                <Typography variant="body2">{`Description: ${appointment.description}`}</Typography>
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  <strong>Symptoms:</strong> {appointment.symptoms}
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  <strong>Specialization:</strong> {appointment.specialization}
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: "5px" }}>
+                  <strong>Description:</strong> {appointment.description}
+                </Typography>
               </CardContent>
             </Card>
 
@@ -345,6 +367,7 @@ const RoomPageDoctor = () => {
                     variant="contained"
                     sx={{ mt: 3 }}
                     fullWidth onClick={submitPrescription}
+                    disabled={prescriptionSubmit}
                   >
                     Submit
                   </Button>
