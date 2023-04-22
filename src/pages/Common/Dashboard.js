@@ -32,6 +32,7 @@ function Dashboard() {
     const gotoSignUpform=()=>{
         navigate('/signUp');
     }
+    localStorage.clear();
     return (
         <>
         <NavHead/>
