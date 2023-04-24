@@ -18,6 +18,7 @@ import PatientProfile from './pages/Patient/PatientProfile';
 import { PatientHistory } from './pages/Patient/PatientHistory';
 import { DoctorPrescriptionList } from './pages/Doctor/DoctorPrescriptionList';
 import AboutUs from './pages/Common/AboutUs';
+import Help from './pages/Common/Help';
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
           <Route path='/patientHistory' element={<PatientHistory/>}></Route>
           <Route path='/doctorPrescriptionList' element={<DoctorPrescriptionList/>}/>
           <Route path='/aboutUs' element={<AboutUs/>}/>
+          <Route path='/help' element={<Help/>}/>
+          
         </Routes>
     </div>
   );

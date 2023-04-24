@@ -39,6 +39,11 @@ function NavHead() {
                 About us
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/help">
+                Help
+              </a>
+            </li>
           </ul>
         </div>
       </div>
