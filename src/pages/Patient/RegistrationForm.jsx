@@ -70,7 +70,7 @@ const RegistrationForm = () => {
             <label className="label_css">Description</label>
             <textarea rows="3" name="description" onChange={handleChange}/>
       <div className="two-button">
-       <button type="submit" className="button-cs" onClick={(e) => saveAppointment(e)}> Video Call </button>
+       <button type="submit" className="button-cs" onClick={(e) => saveAppointment(e)}> Call </button>
        <button type="submit" className="button-cs" onClick={gotoHomePage}> Return </button>
       </div>
       </div>

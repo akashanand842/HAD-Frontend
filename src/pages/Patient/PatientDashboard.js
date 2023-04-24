@@ -9,10 +9,6 @@ import NavHead from '../../components/Nav';
 
 
 export default function PatientDashboard() {
-  // window.location.reload(false);
-  const location=useLocation();
-  const [patient,setPatient]=useState([]);
-  const pid=location.state.patient_id;
   const navigate=useNavigate();
   const [name,setName] = useState('');
 
@@ -22,15 +18,8 @@ export default function PatientDashboard() {
     setName(patient_obj['patientName']);
   })
 
-  
  console.log(name);
-const gotodownloadPrescription=()=>{
-  navigate('/showPrescription')
-}
 
-const navigateVideoCall=()=>{
-  navigate('/roomPatient')
-}
   return (
     <>
     <div className='background-img'>

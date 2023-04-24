@@ -38,6 +38,11 @@ export default function PatientPage() {
       })
       .catch((error) => {
         console.error("Error while getting the list of patient");
+        if(error.response.status==403)
+        {
+          alert('login again');
+          navigate('/login');
+        }
       });
   }, []);
 

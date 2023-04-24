@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import PatientSideNav from "../../components/PatientSideNav";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 export const PatientHistory = () => {
+  const [obj, setObj] = useState([]);
   const patient_obj = JSON.parse(localStorage.getItem("patient"));
   const patientId = patient_obj["patientId"];
   const jwtToken = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const getConsultations = async() => {
         await axios.get(`${process.env.REACT_APP_BACKEND_URL}/patient/get-history-patient/${patientId}`)
@@ -15,40 +19,18 @@ export const PatientHistory = () => {
             console.log(response.data);
             setObj(response.data);
         })
-        .catch((err) => {
-            console.error(err);
+        .catch((error) => {
+            console.error(error);
+            if(error.response.status==403)
+           {
+          alert('login again');
+          navigate('/login');
+          }
         });
     }
     getConsultations();
   }, []);
-  const dummy = [
-    {
-        time : '12:10:00',
-        doctorName : "Dr" + " Akash",
-        date : "12/11/2022",
-    },
-    {
-        time : '12:10:00',
-        doctorName : "Dr" + " Akash",
-        date : "12/11/2022",
-    },
-    {
-        time : '12:10:00',
-        doctorName : "Dr" + " Akash",
-        date : "12/11/2022",
-    },
-    {
-        time : '12:10:00',
-        doctorName : "Dr" + " Akash",
-        date : "12/11/2022",
-    },
-    {
-        time : '12:10:00',
-        doctorName : "Dr" + " Akash",
-        date : "12/11/2022",
-    }
-  ];
-  const [obj, setObj] = useState(dummy);
+  
   const columns = [
     {
         name: "Time",
