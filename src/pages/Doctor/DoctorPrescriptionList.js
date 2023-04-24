@@ -8,49 +8,23 @@ import { Button, Modal } from "react-bootstrap";
 
 export const DoctorPrescriptionList = () => {
   const doctor_obj = JSON.parse(localStorage.getItem("doctor"));
-  const doctorContact = doctor_obj["contact"];
-  const dummy = [
-    {
-      date: "01/02/2023",
-      medicalFinding: "Nothing",
-      medicineName: "Dolo",
-      dosage: "1mg",
-      duration: "2 weeks",
-      patientName: "Yash",
-    },
-    {
-      date: "02/03/2023",
-      medicalFinding: "Nothing",
-      medicineName: "Dolo",
-      dosage: "1mg",
-      duration: "2 weeks",
-      patientName: "Aash",
-    },
-    {
-      date: "10/02/2023",
-      medicalFinding: "Nothing",
-      medicineName: "Dolo",
-      dosage: "1mg",
-      duration: "2 weeks",
-      patientName: "Sha",
-    },
-    {
-      date: "11/02/2023",
-      medicalFinding: "Nothing",
-      medicineName: "Dolo",
-      dosage: "1mg",
-      duration: "2 weeks",
-      patientName: "Sam",
-    },
-  ];
+  const doctorId = doctor_obj['doctorId'];
   const [show, setShow] = useState(false);
   const [prescriptionData, setPrescriptionData] = useState({});
   const handleClose = () => setShow(false);
+  const [obj, setObj] = useState([]);
+  axios.get(`${process.env.REACT_APP_BACKEND_URL}/doctor/prescription-list/${doctorId}`)
+  .then((response)=>{
+    setObj(response.data);
+    console.log(response);
+  })
+  .catch((error)=>{
+    console.error('error on fetching prescription',error);
+  })
   const handleShow = (data) => {
     setPrescriptionData(data);
     setShow(true);
   };
-  const [obj, setObj] = useState(dummy);
   const columns = [
     {
       name: "Date",
@@ -118,7 +92,7 @@ export const DoctorPrescriptionList = () => {
           <h1>Prescription Lists</h1>
           <DataTable
             columns={columns}
-            data={dummy}
+            data={obj}
             fixedHeader
             pagination
             paginationComponentOptions={paginationComponentOptions}
