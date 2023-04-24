@@ -1,1 +1,0 @@
-url=http://karexpert-iiitb.us-east-1.elasticbeanstalk.com/

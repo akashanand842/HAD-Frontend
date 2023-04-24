@@ -27,6 +27,10 @@ const SideNav = () => {
     navigate('/DoctorPage');
   }
 
+  const gotoList = ()=>{
+    navigate('/doctorPrescriptionList')
+  }
+
   return (
     <>
       <div className="sidebar">
@@ -43,7 +47,7 @@ const SideNav = () => {
             <div className='sidebaricon'><ManageSearchIcon/></div>
             <li className="sidebartitle">History</li>
             </div>
-            <div className='sidebarRow'>
+            <div className='sidebarRow' onClick={gotoList}>
             <div className='sidebaricon'> <MedicationIcon/></div>
             <li className="sidebartitle">Prescriptions</li>
             </div>
