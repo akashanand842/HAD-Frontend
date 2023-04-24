@@ -35,7 +35,7 @@ function NavHead() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a className="nav-link" href="/aboutUs">
                 About us
               </a>
             </li>

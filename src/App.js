@@ -17,6 +17,7 @@ import PatientPrescriptionList from './pages/Patient/PatientPrescriptionList';
 import PatientProfile from './pages/Patient/PatientProfile';
 import { PatientHistory } from './pages/Patient/PatientHistory';
 import { DoctorPrescriptionList } from './pages/Doctor/DoctorPrescriptionList';
+import AboutUs from './pages/Common/AboutUs';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/PatientProfile' element={<PatientProfile/>}/>
           <Route path='/patientHistory' element={<PatientHistory/>}></Route>
           <Route path='/doctorPrescriptionList' element={<DoctorPrescriptionList/>}/>
+          <Route path='/aboutUs' element={<AboutUs/>}/>
         </Routes>
     </div>
   );

@@ -65,7 +65,8 @@ function Login() {
           });
       })
       .catch((error) => {
-        console.error("Error while fetch jwt");
+       alert('Sign Up first')
+        navigate('/');
       });
   };
 
@@ -106,17 +107,16 @@ function Login() {
     if (otp.length === 6) {
       // console.log(otp);
       let confirmationResult = window.confirmationResult;
-      confirmationResult
-        .confirm(otp)
+      confirmationResult.confirm(otp)
         .then((result) => {
           // User signed in successfully.
           const user = result.user;
           console.log(user);
           gotoUserPage();
-          // ...
         })
         .catch((error) => {
           alert("Invalid OTP");
+          window.location.reload('false');
         });
     }
   };
@@ -208,7 +208,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="butt" onClick={gotoUserPage}>
+            <button type="submit" className="butt" onClick={requestOTP}>
               Request OTP
             </button>
           ) : null}
