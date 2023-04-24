@@ -69,9 +69,7 @@ const RoomPage=()=>{
 
     return (
        <> 
-      <div className='RoomCss'>
-        <div ref={myMeeting}></div>
-      </div>
+        <div ref={myMeeting} style={{width:'100vw',height:'100vh'}}></div>
       </>
     )
 }
