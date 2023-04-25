@@ -137,7 +137,7 @@ const RoomPageDoctor = () => {
         <Grid
           item
           xs={8}
-          style={{ width: "84vw", height: "94vh" }}
+          style={{ width: "84vw", height: "100%" , marginTop:"0",marginBottom:"0"}}
           ref={myMeeting}
         ></Grid>
 
@@ -153,7 +153,7 @@ const RoomPageDoctor = () => {
             }}
             elevation={4}
           >
-            <Typography>Patient Name:</Typography>
+            {/* <Typography>Patient</Typography> */}
 
             {/* Health Record Table */}
             <Card

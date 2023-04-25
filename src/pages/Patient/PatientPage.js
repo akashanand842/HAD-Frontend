@@ -9,6 +9,10 @@ import NavHead from "../../components/Nav";
 export default function PatientPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const gotologin=()=>{
+    navigate('/login');
+  }
+
   const [patientList, setPatientList] = useState([]);
   const jwtToken = localStorage.getItem("token");
   console.log(jwtToken);
@@ -20,8 +24,6 @@ export default function PatientPage() {
       state: { patient_id: patientId },
     });
   };
-
-  console.log(location.state.patientNum);
 
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
@@ -45,6 +47,7 @@ export default function PatientPage() {
   },);
 
   return (
+
     <>
       <NavHead />
       <div className="patient_background">

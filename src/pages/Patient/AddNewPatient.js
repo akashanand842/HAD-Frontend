@@ -8,7 +8,8 @@ import NavHead from "../../components/Nav";
 const AddNewPatient = ({ setLoginUser }) => {
   const navigate = useNavigate();
   const patient_num = localStorage.getItem('patient_num');
-
+  const jwtToken = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
   const [user, setUser] = useState({
     patientName:"",
     age:undefined,
@@ -33,7 +34,7 @@ const AddNewPatient = ({ setLoginUser }) => {
 
     if(user.age===undefined) {alert('Enter Valid Age'); return ;} 
 
-     axios.post(`${process.env.REACT_APP_BACKEND_URL}/authenticate/add`,user)
+     axios.post(`${process.env.REACT_APP_BACKEND_URL}/add-patient`,user)
      .then((response)=>{
         console.log(response);
         navigate('/PatientPage',{

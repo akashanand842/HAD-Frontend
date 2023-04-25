@@ -41,7 +41,7 @@
 .button-css {
     width: 150px;
 	height: 40px;
-	margin: 15px auto 0px auto;
+	margin: 5px auto 0px auto;
 	font-family: arimo;
 	font-size: 1.1rem;
 	border: none;
@@ -54,7 +54,7 @@
     background: linear-gradient(to right, #9bc5c3, #616161);
 }
 .text_css{
-    margin-left: 0;
+    margin-left: 140px;
     font-family: arimo;
 	color: black;
 }
