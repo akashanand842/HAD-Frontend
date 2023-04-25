@@ -34,7 +34,7 @@ const AddNewPatient = ({ setLoginUser }) => {
 
     if(user.age===undefined) {alert('Enter Valid Age'); return ;} 
 
-     axios.post(`${process.env.REACT_APP_BACKEND_URL}/add-patient`,user)
+     axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/add-patient`,user)
      .then((response)=>{
         console.log(response);
         navigate('/PatientPage',{
