@@ -19,8 +19,8 @@ const DoctorProfile = () => {
   const [docemail, setDocemail] = useState(email);
   const [docname, setDocname] = useState(name);
   const [docspec, setDocspec] = useState(specialization);
-  const [docage, setDocage] = useState(age);
   const [docphone, setDocphone] = useState(phone_num);
+  const docage = age;
   const saveUpdate = async () => {
     const doc = {
       doctorName: docname,
@@ -51,6 +51,7 @@ const DoctorProfile = () => {
                   src={gender === "Male" ? lnkm : lnkf}
                   className="rounded-circle"
                   width="150"
+                  alt="Doctor-pic"
                 />
                 <div className="mt-3">
                   <h4>{docname}</h4>

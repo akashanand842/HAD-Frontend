@@ -1,4 +1,3 @@
-import { blue, red } from "@mui/material/colors";
 import React from "react";
 
 function NavHead() {

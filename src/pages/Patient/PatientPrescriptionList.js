@@ -78,7 +78,7 @@ const PatientPrescriptionList = () => {
           })
       }
       prescriptions();
-    }, []);
+    },);
 
   const paginationComponentOptions = {
     noRowsPerPage: true,

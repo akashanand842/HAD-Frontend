@@ -1,6 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
-import NavHead from "./components/Nav";
+import {Routes,Route} from 'react-router-dom'
 import Dashboard from './pages/Common/Dashboard';
 import Login from './pages/Patient/login'
 import PatientDashboard from './pages/Patient/PatientDashboard'

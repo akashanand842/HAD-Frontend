@@ -21,7 +21,7 @@ export const PatientHistory = () => {
         })
         .catch((error) => {
             console.error(error);
-            if(error.response.status==403)
+            if(error.response.status===403)
            {
           alert('login again');
           navigate('/login');
@@ -29,7 +29,7 @@ export const PatientHistory = () => {
         });
     }
     getConsultations();
-  }, []);
+  },);
   
   const columns = [
     {

@@ -1,7 +1,6 @@
 import React from "react";
 import PatientSideNav from "../../components/PatientSideNav";
 import "../../Css_files/PatientProfile.css";
-import { useState } from "react";
 
 const PatientProfile = () => {
 
@@ -16,11 +15,6 @@ const PatientProfile = () => {
     "https://static.vecteezy.com/system/resources/thumbnails/002/002/297/small/beautiful-woman-avatar-character-icon-free-vector.jpg";
   const lnkm = "https://bootdey.com/img/Content/avatar/avatar7.png";
 
-  const [patname, setPatname] = useState(name);
-  const [patgen, setPatgen] = useState(gender);
-  const [patage, setPatage] = useState(age);
-  const [patphone, setPatphone] = useState(phone_num);
-
   return (
     <>
       <div className="background-img">
@@ -31,18 +25,18 @@ const PatientProfile = () => {
                 <img
                   src={gender === "Male" ? lnkm : lnkf}
                   className="rounded-circle"
-                  width="150"
+                  width="150" alt="Profile-pic"
                 />
                 <div className="mt-3">
-                  <h4>Name: {patname}</h4>
+                  <h4>Name: {name}</h4>
                   <p className="text-secondary mb-2 font-size-lg">
-                    <h5>Phone: {patphone}</h5>
+                    <h5>Phone: {phone_num}</h5>
                   </p>
                   <p className="text-secondary mb-2 font-size-lg">
-                    <h5>Gender: {patgen}</h5>
+                    <h5>Gender: {gender}</h5>
                   </p>
                   <p className="text-muted font-size-sm">
-                    <h5>Age: {patage}</h5>
+                    <h5>Age: {age}</h5>
                   </p>
                 </div>
               </div>

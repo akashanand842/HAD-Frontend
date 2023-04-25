@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import './../../Css_files/SignUp.css'
 import NavHead from "../../components/Nav";
 
-const SignUp = ({ setLoginUser }) => {
+const SignUp = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -30,7 +30,7 @@ const SignUp = ({ setLoginUser }) => {
      })
      .catch((error)=>{
         console.error('error on submitting',error);
-        alert('Invalid Infomation');
+        alert('Patient Already Exits or Invalid Infomation plz check');
      })
    }
 
@@ -39,7 +39,6 @@ const SignUp = ({ setLoginUser }) => {
     <NavHead/>
     <div className="signUp">
     <div className="register">
-      {/* {console.log("user", user)} */}
       <h2 className="text_css">Sign Up</h2>
       <input type="text" name="patientName"
         value={user.patientName}

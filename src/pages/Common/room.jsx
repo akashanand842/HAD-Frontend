@@ -1,10 +1,9 @@
 import React from 'react'
-import { useParams , useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useEffect} from 'react';
 import "../../Css_files/VideoCall.css"
-import PatientSideNav from '../../components/PatientSideNav';
 
 
 const RoomPage=()=>{
@@ -16,7 +15,6 @@ const RoomPage=()=>{
     const patientId = patient_obj['patientId'];
     const roomId = patientId;
     const roomnum = roomId.toString();
-    const patientNumber = patient_obj['phoneNumber'];
     const specialization = localStorage.getItem('specialization');
 
     const myMeeting =(element) =>{
@@ -59,7 +57,7 @@ const RoomPage=()=>{
         axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/join-queue/${patientId}/${specialization}?roomId=${roomId}`,)
         .then((response)=>{
-            console.log('queue success');
+            console.log(response,'queue success');
         })
         .catch((error)=>{
           console.error('error on adding to queue',error);
