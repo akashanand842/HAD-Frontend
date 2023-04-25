@@ -13,7 +13,7 @@ const AddNewPatient = ({ setLoginUser }) => {
   const [user, setUser] = useState({
     patientName:"",
     age:undefined,
-    gender:"",
+    gender:"Male",
     phoneNumber:patient_num,
     medicalHistory:""
   });
@@ -23,6 +23,7 @@ const AddNewPatient = ({ setLoginUser }) => {
       ...user,
       [name]: value,
     });
+    console.log(user);
   };
    const submitUser=()=>{
 
@@ -68,9 +69,9 @@ const AddNewPatient = ({ setLoginUser }) => {
         placeholder="Age"
         onChange={handleChange}
       ></input>
-      <select type="string" placeholder="gender" name="gender" onClick={handleChange}>
-        <option value="Male" >Male</option>
-        <option value="Female">Female</option>
+      <select name="gender" onChange={handleChange}>
+        <option>Male</option>
+        <option>Female</option>
       </select>
       <input
         type="string"

@@ -34,7 +34,7 @@ export const PatientHistory = () => {
   const columns = [
     {
         name: "Time",
-        selector: (row) => row.date,
+        selector: (row) => row.time,
         sortable: true,
     },
     {

@@ -137,7 +137,7 @@ const RoomPageDoctor = () => {
         <Grid
           item
           xs={8}
-          style={{ width: "84vw", height: "100%" , marginTop:"0",marginBottom:"0"}}
+          style={{ width: "84vw", height: "94vh" , marginTop:"0",marginBottom:"0"}}
           ref={myMeeting}
         ></Grid>
 

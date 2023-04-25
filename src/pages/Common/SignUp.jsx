@@ -7,11 +7,10 @@ import NavHead from "../../components/Nav";
 
 const SignUp = () => {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     patientName:"",
-    age:undefined,
-    gender:"",
+    age:0,
+    gender:"Male",
     phoneNumber:"",
     medicalHistory:""
   });
@@ -23,6 +22,7 @@ const SignUp = () => {
     });
   };
    const submitUser=()=>{
+    
      axios.post(`${process.env.REACT_APP_BACKEND_URL}/authenticate/add`,user)
      .then((response)=>{
         console.log(response);

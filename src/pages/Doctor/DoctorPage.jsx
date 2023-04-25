@@ -16,14 +16,9 @@ useEffect(()=>{
   }
 })
 
-let name;
-let doctorId;
 
-if(!doctor_obj===null)
-{
- name = doctor_obj["doctorName"];
- doctorId = doctor_obj["doctorId"];
-}
+const name = doctor_obj["doctorName"];
+const doctorId = doctor_obj["doctorId"];
 
   const gotoroomDoctor = () => {
     navigate("/roomDoctor");
@@ -47,13 +42,8 @@ useEffect(()=>{
   return ()=>{clearInterval(currsize);}
 },[queue])
   
- const gotologin=()=>{
-    navigate('/login');
- } 
-
   return (
     <>
-      {doctor_obj===null?<>{gotologin}</>:
       <div className="doctor_background">
         <SideNav />
          <h1 className="doctorName_css">{name}</h1>
@@ -62,7 +52,6 @@ useEffect(()=>{
           <button onClick={gotoroomDoctor}>Accept VC</button>
         </div>
       </div>
-     }
     </>
   );
 };

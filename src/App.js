@@ -42,8 +42,6 @@ function App() {
           <Route path='/patientHistory' element={<PatientHistory/>}></Route>
           <Route path='/doctorPrescriptionList' element={<DoctorPrescriptionList/>}/>
           <Route path='/aboutUs' element={<AboutUs/>}/>
-          <Route path='/help' element={<Help/>}/>
-          
         </Routes>
     </div>
   );
