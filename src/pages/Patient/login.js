@@ -207,7 +207,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="butt" onClick={gotoUserPage}>
+            <button type="submit" className="butt" onClick={requestOTP}>
               Request OTP
             </button>
           ) : null}

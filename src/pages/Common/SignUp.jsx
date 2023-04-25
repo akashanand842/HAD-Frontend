@@ -49,7 +49,7 @@ const SignUp = () => {
         placeholder="Age"
         onChange={handleChange}
       ></input>
-      <select type="string" placeholder="gender" name="gender" onClick={handleChange}>
+      <select type="string" placeholder="gender" name="gender" onChange={handleChange}>
         <option value="Male" >Male</option>
         <option value="Female">Female</option>
       </select>
