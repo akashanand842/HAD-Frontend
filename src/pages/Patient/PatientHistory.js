@@ -44,7 +44,7 @@ export const PatientHistory = () => {
     },
     
     {
-      name: "Patient Name",
+      name: "Doctor Name",
       selector: (row) => row.doctorName,
     },
   ];
