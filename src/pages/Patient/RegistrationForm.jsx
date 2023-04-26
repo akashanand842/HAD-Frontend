@@ -54,7 +54,7 @@ const RegistrationForm = () => {
       
       <div className="background-img">
       <div className="box-css">
-        <h2 className="text_css">Take Appointment</h2>
+        <h2 className="text_cssss">Take Appointment</h2>
         <label className="label_css">Symptoms</label>
             <input type="text" name="symptoms"
               placeholder="symptoms" onChange={handleChange} />
