@@ -5,11 +5,20 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const DoctorPage = () => {
-
+const navigate = useNavigate();
 const doctor_obj = JSON.parse(localStorage.getItem("doctor"));
+
+useEffect(()=>{
+  if(doctor_obj===null)
+  {
+    navigate('/login');
+    console.log('1234')
+  }
+})
+
+
 const name = doctor_obj["doctorName"];
 const doctorId = doctor_obj["doctorId"];
-const navigate = useNavigate();
 
   const gotoroomDoctor = () => {
     navigate("/roomDoctor");

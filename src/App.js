@@ -1,6 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router,Routes,Route,Switch} from 'react-router-dom'
-import NavHead from "./components/Nav";
+import {Routes,Route} from 'react-router-dom'
 import Dashboard from './pages/Common/Dashboard';
 import Login from './pages/Patient/login'
 import PatientDashboard from './pages/Patient/PatientDashboard'
@@ -17,6 +16,8 @@ import PatientPrescriptionList from './pages/Patient/PatientPrescriptionList';
 import PatientProfile from './pages/Patient/PatientProfile';
 import { PatientHistory } from './pages/Patient/PatientHistory';
 import { DoctorPrescriptionList } from './pages/Doctor/DoctorPrescriptionList';
+import AboutUs from './pages/Common/AboutUs';
+import Help from './pages/Common/Help';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/PatientProfile' element={<PatientProfile/>}/>
           <Route path='/patientHistory' element={<PatientHistory/>}></Route>
           <Route path='/doctorPrescriptionList' element={<DoctorPrescriptionList/>}/>
+          <Route path='/aboutUs' element={<AboutUs/>}/>
         </Routes>
     </div>
   );

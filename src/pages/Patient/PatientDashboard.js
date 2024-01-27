@@ -1,18 +1,11 @@
 import React from 'react'
-import { useLocation,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import "../../Css_files/PatientDashboard.css";
-import RegistrationForm from './RegistrationForm';
 import PatientSideNav from '../../components/PatientSideNav';
-import NavHead from '../../components/Nav';
 
 
 export default function PatientDashboard() {
-  // window.location.reload(false);
-  const location=useLocation();
-  const [patient,setPatient]=useState([]);
-  const pid=location.state.patient_id;
   const navigate=useNavigate();
   const [name,setName] = useState('');
 
@@ -20,17 +13,10 @@ export default function PatientDashboard() {
 
   useEffect(()=>{
     setName(patient_obj['patientName']);
-  })
+  },[])
 
-  
  console.log(name);
-const gotodownloadPrescription=()=>{
-  navigate('/showPrescription')
-}
 
-const navigateVideoCall=()=>{
-  navigate('/roomPatient')
-}
   return (
     <>
     <div className='background-img'>

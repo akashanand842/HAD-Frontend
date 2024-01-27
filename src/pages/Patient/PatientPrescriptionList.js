@@ -44,7 +44,7 @@ const PatientPrescriptionList = () => {
       sortable: true,
     },
     {
-      name: "Doctor Name",
+      name: "Doctor",
       selector: (row) => row.doctorName,
     },
     {
@@ -78,7 +78,7 @@ const PatientPrescriptionList = () => {
           })
       }
       prescriptions();
-    }, []);
+    },);
 
   const paginationComponentOptions = {
     noRowsPerPage: true,

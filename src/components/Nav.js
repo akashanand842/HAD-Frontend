@@ -1,4 +1,3 @@
-import { blue, red } from "@mui/material/colors";
 import React from "react";
 
 function NavHead() {
@@ -29,13 +28,13 @@ function NavHead() {
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="/">
                 Contact us
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a className="nav-link" href="/aboutUs">
                 About us
               </a>
             </li>

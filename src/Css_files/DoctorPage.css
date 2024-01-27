@@ -3,7 +3,6 @@
     padding: 30px;
     margin: 10vh 30vw 30vh 35vw;
     border: 2px solid #ccc;
-    background-color: rgb(221, 235, 235);
 }
 
 .doctor_background{
@@ -17,9 +16,9 @@
   }
   .doctorName_css{
     margin-top: 20vh;
-    margin-left: 30%;
+    margin-left: 40%;
   }
   .doctorQueue_css{
-    margin-top: 10px;
-    margin-left: 28%;
+    margin-top: 20px;
+    margin-left: 31%;
   }

@@ -6,56 +6,14 @@ import axios from "axios";
 import {
   Grid,
   Paper,
-  Select,
   Button,
   Box,
   Typography,
   TextField,
-  FormControl,
-  InputLabel,
   Card,
   CardContent,
   Container,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Switch from "@mui/material/Switch";
-import MenuItem from "@mui/material/MenuItem";
-
-//Table1
-function createData(name, dateofupload) {
-  return { name, dateofupload };
-}
-
-const rows = [createData("", "", "")];
-
-//Table2
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#e3f2fd",
-    color: theme.palette.common.black,
-    fontSize: 18,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 18,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const RoomPageDoctor = () => {
   const [roomId, setRoomId] = useState(123);
@@ -74,7 +32,7 @@ const RoomPageDoctor = () => {
     dosage: "20mg",
     duration: "1 week",
   });
-  const [inputField, setInputFields] = useState([{ medicine: "", dosage: "" }]);
+
   const navigate = useNavigate();
 
   const doctor_obj = JSON.parse(localStorage.getItem("doctor"));
@@ -161,12 +119,6 @@ const RoomPageDoctor = () => {
     // submit prescription data to backend
   };
 
-  const addFields = (event) => {
-    event.preventDefault();
-    let newField = { medicine: "", dosage: "" };
-    setInputFields([...inputField, newField]);
-  };
-
  const submitPrescription = async () => {
     setPrescriptionSubmit(true);
     axios.defaults.headers.common['Authorization']=`Bearer ${jwtToken}`;
@@ -185,7 +137,7 @@ const RoomPageDoctor = () => {
         <Grid
           item
           xs={8}
-          style={{ width: "84vw", height: "94vh" }}
+          style={{ width: "84vw", height: "94vh" , marginTop:"0",marginBottom:"0"}}
           ref={myMeeting}
         ></Grid>
 
@@ -201,7 +153,7 @@ const RoomPageDoctor = () => {
             }}
             elevation={4}
           >
-            <Typography>Patient Name:</Typography>
+            {/* <Typography>Patient</Typography> */}
 
             {/* Health Record Table */}
             <Card

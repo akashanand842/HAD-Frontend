@@ -76,3 +76,9 @@
     background: -webkit-linear-gradient(to right, #3e3f3f, #616161);  
     background: linear-gradient(to right, #2f3030, #616161);
 }
+
+.text_cssss{
+    margin-left: 90px;
+    font-family: arimo;
+	color: black;
+}

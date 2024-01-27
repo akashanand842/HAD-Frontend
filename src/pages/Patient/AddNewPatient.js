@@ -8,11 +8,12 @@ import NavHead from "../../components/Nav";
 const AddNewPatient = ({ setLoginUser }) => {
   const navigate = useNavigate();
   const patient_num = localStorage.getItem('patient_num');
-
+  const jwtToken = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
   const [user, setUser] = useState({
     patientName:"",
     age:undefined,
-    gender:"",
+    gender:"Male",
     phoneNumber:patient_num,
     medicalHistory:""
   });
@@ -22,6 +23,7 @@ const AddNewPatient = ({ setLoginUser }) => {
       ...user,
       [name]: value,
     });
+    console.log(user);
   };
    const submitUser=()=>{
 
@@ -33,7 +35,7 @@ const AddNewPatient = ({ setLoginUser }) => {
 
     if(user.age===undefined) {alert('Enter Valid Age'); return ;} 
 
-     axios.post(`${process.env.REACT_APP_BACKEND_URL}/authenticate/add`,user)
+     axios.post(`${process.env.REACT_APP_BACKEND_URL}/patient/add-patient`,user)
      .then((response)=>{
         console.log(response);
         navigate('/PatientPage',{
@@ -67,9 +69,9 @@ const AddNewPatient = ({ setLoginUser }) => {
         placeholder="Age"
         onChange={handleChange}
       ></input>
-      <select type="string" placeholder="gender" name="gender" onClick={handleChange}>
-        <option value="Male" >Male</option>
-        <option value="Female">Female</option>
+      <select name="gender" onChange={handleChange}>
+        <option>Male</option>
+        <option>Female</option>
       </select>
       <input
         type="string"

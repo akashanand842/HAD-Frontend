@@ -5,13 +5,12 @@ import { useNavigate } from "react-router-dom";
 import './../../Css_files/SignUp.css'
 import NavHead from "../../components/Nav";
 
-const SignUp = ({ setLoginUser }) => {
+const SignUp = () => {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     patientName:"",
-    age:undefined,
-    gender:"",
+    age:0,
+    gender:"Male",
     phoneNumber:"",
     medicalHistory:""
   });
@@ -23,6 +22,7 @@ const SignUp = ({ setLoginUser }) => {
     });
   };
    const submitUser=()=>{
+    
      axios.post(`${process.env.REACT_APP_BACKEND_URL}/authenticate/add`,user)
      .then((response)=>{
         console.log(response);
@@ -30,7 +30,7 @@ const SignUp = ({ setLoginUser }) => {
      })
      .catch((error)=>{
         console.error('error on submitting',error);
-        alert('Invalid Infomation');
+        alert('Patient Already Exits or Invalid Infomation plz check');
      })
    }
 
@@ -39,7 +39,6 @@ const SignUp = ({ setLoginUser }) => {
     <NavHead/>
     <div className="signUp">
     <div className="register">
-      {/* {console.log("user", user)} */}
       <h2 className="text_css">Sign Up</h2>
       <input type="text" name="patientName"
         value={user.patientName}
@@ -50,7 +49,7 @@ const SignUp = ({ setLoginUser }) => {
         placeholder="Age"
         onChange={handleChange}
       ></input>
-      <select type="string" placeholder="gender" name="gender" onClick={handleChange}>
+      <select type="string" placeholder="gender" name="gender" onChange={handleChange}>
         <option value="Male" >Male</option>
         <option value="Female">Female</option>
       </select>

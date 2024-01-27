@@ -54,7 +54,7 @@ const RegistrationForm = () => {
       
       <div className="background-img">
       <div className="box-css">
-        <h2 className="text_css">Take Appointment</h2>
+        <h2 className="text_cssss">Take Appointment</h2>
         <label className="label_css">Symptoms</label>
             <input type="text" name="symptoms"
               placeholder="symptoms" onChange={handleChange} />
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
             <label className="label_css">Description</label>
             <textarea rows="3" name="description" onChange={handleChange}/>
       <div className="two-button">
-       <button type="submit" className="button-cs" onClick={(e) => saveAppointment(e)}> Video Call </button>
+       <button type="submit" className="button-cs" onClick={(e) => saveAppointment(e)}> Call </button>
        <button type="submit" className="button-cs" onClick={gotoHomePage}> Return </button>
       </div>
       </div>

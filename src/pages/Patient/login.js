@@ -6,7 +6,6 @@ import "react-phone-number-input/style.css";
 import "../../Css_files/LoginPage.css";
 import PhoneInput from "react-phone-number-input";
 import NavHead from "../../components/Nav";
-import SmsIcon from "@mui/icons-material/Sms";
 import axios from "axios";
 
 function Login() {
@@ -65,7 +64,8 @@ function Login() {
           });
       })
       .catch((error) => {
-        console.error("Error while fetch jwt");
+       alert('Sign Up first')
+        navigate('/');
       });
   };
 
@@ -106,17 +106,16 @@ function Login() {
     if (otp.length === 6) {
       // console.log(otp);
       let confirmationResult = window.confirmationResult;
-      confirmationResult
-        .confirm(otp)
+      confirmationResult.confirm(otp)
         .then((result) => {
           // User signed in successfully.
           const user = result.user;
           console.log(user);
           gotoUserPage();
-          // ...
         })
         .catch((error) => {
           alert("Invalid OTP");
+          window.location.reload('false');
         });
     }
   };
@@ -142,7 +141,7 @@ function Login() {
       <NavHead />
       <div className="login_css">
         <div className="box">
-          <h2 className="text_css">Enter Your number</h2>
+          <h2 className="text_csss">Enter Your number</h2>
           <div className="input_css">
             <PhoneInput
               defaultCountry="IN"
@@ -208,7 +207,7 @@ function Login() {
             </>
           ) : null}
           {expandForm === false ? (
-            <button type="submit" className="butt" onClick={gotoUserPage}>
+            <button type="submit" className="butt" onClick={requestOTP}>
               Request OTP
             </button>
           ) : null}

@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../Css_files/PatientPage.css";
-import { type } from "@testing-library/user-event/dist/type";
 import NavHead from "../../components/Nav";
 
 
 export default function PatientPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [lists, setLists] = useState(true);
+  const gotologin=()=>{
+    navigate('/login');
+  }
+
   const [patientList, setPatientList] = useState([]);
   const jwtToken = localStorage.getItem("token");
   console.log(jwtToken);
@@ -22,8 +24,6 @@ export default function PatientPage() {
       state: { patient_id: patientId },
     });
   };
-
-  console.log(location.state.patientNum);
 
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
 
@@ -38,10 +38,16 @@ export default function PatientPage() {
       })
       .catch((error) => {
         console.error("Error while getting the list of patient");
+        if(error.response.status===403)
+        {
+          alert('login again');
+          navigate('/login');
+        }
       });
-  }, []);
+  },);
 
   return (
+
     <>
       <NavHead />
       <div className="patient_background">
